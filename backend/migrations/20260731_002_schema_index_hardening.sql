@@ -1,0 +1,11 @@
+-- Intentionally startup-safe. The original DDL used ordinary CREATE/DROP INDEX
+-- statements inside the versioned migration transaction, which can block writes
+-- on large production tables. Apply the non-transactional maintenance script in
+-- a maintenance window instead:
+--
+--   psql "$POSTGRES_MAINTENANCE_URL" -v ON_ERROR_STOP=1 \
+--     -f backend/scripts/maintenance/schema_index_hardening.sql
+--
+-- Do not run that script with psql --single-transaction. It uses
+-- CREATE/DROP INDEX CONCURRENTLY and is intentionally excluded from startup.
+SELECT 1;

@@ -1,0 +1,20 @@
+{
+  "id": "academy",
+  "name": "教育课程",
+  "description": "用于课程、工作坊、培训和知识传播的亲和且严谨的学习设计体系。",
+  "localized_name": "教育课程",
+  "localized_description": "用于课程、培训和知识传播的教学叙事体系，把概念、案例、练习与复盘组织成清晰学习路径。",
+  "localized_tags": ["教育", "课程", "培训", "知识传播"],
+  "palette": ["#283618", "#FEFAE0", "#DDA15E", "#606C38"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_learning_promise","description":"用一张亲和图片和清晰课程成果构成学习承诺封面。","components":[{"id":"cover-image","position":{"x":720,"y":90},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":440,"height":520},"fit":"cover"}]}]},
+    {"id":"learning_map_modules","description":"展示课程模块、里程碑与每一阶段的实践成果。","components":[]},
+    {"id":"concept_visual_explainer","description":"用视觉隐喻、简短定义和示例解释一个核心概念。","components":[{"id":"concept-image","position":{"x":760,"y":120},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":390,"height":410},"fit":"contain"}]}]},
+    {"id":"case_study_situation_choice","description":"以情境、决策选项和结果对比组织案例学习。","components":[]},
+    {"id":"practice_workshop_canvas","description":"为限时练习、引导提示和学员输出预留工作坊画布。","components":[]},
+    {"id":"framework_steps_memory","description":"用三步框架、视觉锚点和回忆提示建立可记忆方法。","components":[]},
+    {"id":"reflection_evidence_check","description":"通过复盘和证据检查把课程转化为可执行的下一步。","components":[]},
+    {"id":"closing_learning_next_step","description":"以课程回顾、下一次练习、资源和讨论邀请收束。","components":[]}
+  ]
+}

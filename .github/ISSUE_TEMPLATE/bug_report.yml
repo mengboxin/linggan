@@ -1,0 +1,65 @@
+name: 🐛 问题反馈
+description: 发现异常、崩溃、页面错乱或与预期不一致的行为
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你的反馈！请不要粘贴 API Key、Cookie、用户隐私数据或未打码的后台截图。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题是什么？
+      description: 用一句话说明你遇到的异常，以及你原本希望发生什么。
+      placeholder: 例如：画布拖入图片后，右侧预览一直显示加载中。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 如何复现？
+      description: 请按顺序列出最小复现步骤。
+      placeholder: |
+        1. 打开…
+        2. 点击…
+        3. 输入…
+        4. 看到…
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为与实际行为
+      placeholder: 预期…；实际…
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 影响模块
+      options:
+        - 图像生成 / 编辑
+        - 无限画布 / 工作流
+        - PPT
+        - 海报 / 科研图
+        - 灵感广场
+        - 登录 / 资产 / 计费
+        - 管理后台
+        - 桌面端 / Photoshop 插件
+        - 部署 / API
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 浏览器或客户端版本、系统版本、部署方式、相关日志等。请先移除敏感信息。
+      placeholder: "Chrome 版本 / Windows 或 macOS / 本地或 Docker 部署"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 截图、录屏或日志（可选）
+      description: 请先打码任何密钥、邮箱、订单、用户信息和私有链接。

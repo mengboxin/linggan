@@ -1,0 +1,20 @@
+{
+  "id": "curator",
+  "name": "策展叙事",
+  "description": "用于文化、建筑、作品集与场所叙事的展览式演示体系，以图片节奏和精确图注推进观点。",
+  "localized_name": "策展叙事",
+  "localized_description": "像一场展览般组织作品、空间与观点，以图片节奏、章节留白和精确图注推进叙事。",
+  "localized_tags": ["策展", "文化", "作品集", "图片叙事"],
+  "palette": ["#20201D", "#F2EFE7", "#BA4A2E", "#8C9A80"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_gallery_wall_statement","description":"以单件作品和受保护的观点区构成安静的展墙式封面。","components":[{"id":"artwork","position":{"x":730,"y":70},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":430,"height":570},"fit":"cover"}]}]},
+    {"id":"curatorial_question_two_columns","description":"用窄幅背景栏和带注释的视觉区提出策展问题。","components":[]},
+    {"id":"chapter_artwork_caption","description":"以超大章节索引、单件作品和精确图注栏划分叙事章节。","components":[{"id":"chapter-image","position":{"x":0,"y":110},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":570,"height":500},"fit":"cover"}]}]},
+    {"id":"sequence_contact_sheet","description":"四张图片组成联系表，以一条解释线索串联。","components":[{"id":"contact-sheet","position":{"x":70,"y":140},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":700,"height":420},"fit":"cover"}]}]},
+    {"id":"place_map_observation","description":"将地点地图、田野观察和一张证据图片并置。","components":[{"id":"observation-image","position":{"x":810,"y":110},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":330,"height":420},"fit":"cover"}]}]},
+    {"id":"material_palette_detail","description":"用材料色板和局部细节框建立可触摸的视觉论证。","components":[{"id":"detail","position":{"x":70,"y":130},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":510,"height":440},"fit":"cover"}]}]},
+    {"id":"before_after_spatial_compare","description":"以对齐的图片框比较空间前后状态，并收束为克制结论。","components":[{"id":"comparison","position":{"x":70,"y":150},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":720,"height":360},"fit":"cover"}]}]},
+    {"id":"closing_open_question","description":"以收束作品、开放问题和联系信息区结束演示。","components":[{"id":"closing-art","position":{"x":0,"y":0},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":1280,"height":720},"fit":"cover"}]}]}
+  ]
+}

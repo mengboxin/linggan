@@ -1,0 +1,326 @@
+.node-delete-dialog {
+  --node-delete-panel: rgba(255, 252, 247, 0.86);
+  --node-delete-panel-border: rgba(255, 255, 255, 0.9);
+  --node-delete-panel-shadow: 0 28px 80px rgba(65, 44, 24, 0.2), 0 7px 20px rgba(65, 44, 24, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --node-delete-heading: #352b23;
+  --node-delete-copy: #786a5d;
+  --node-delete-muted: #96887a;
+  --node-delete-divider: rgba(132, 105, 76, 0.16);
+  --node-delete-target: rgba(255, 255, 255, 0.58);
+  --node-delete-target-border: rgba(160, 126, 88, 0.18);
+  --node-delete-accent: #bd6d1e;
+  --node-delete-cancel: rgba(255, 255, 255, 0.58);
+  --node-delete-cancel-hover: rgba(255, 255, 255, 0.88);
+  --node-delete-danger: #b84b4b;
+  --node-delete-danger-hover: #a43e3e;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(33, 26, 20, 0.48);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: node-delete-backdrop-in 160ms ease-out both;
+}
+
+.dark .node-delete-dialog {
+  --node-delete-panel: rgba(19, 21, 23, 0.86);
+  --node-delete-panel-border: rgba(255, 255, 255, 0.13);
+  --node-delete-panel-shadow: 0 32px 90px rgba(0, 0, 0, 0.58), 0 8px 24px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --node-delete-heading: #f0f1f2;
+  --node-delete-copy: #b6b8bc;
+  --node-delete-muted: #85898e;
+  --node-delete-divider: rgba(255, 255, 255, 0.09);
+  --node-delete-target: rgba(255, 255, 255, 0.05);
+  --node-delete-target-border: rgba(255, 255, 255, 0.09);
+  --node-delete-accent: #e5e7eb;
+  --node-delete-cancel: rgba(255, 255, 255, 0.055);
+  --node-delete-cancel-hover: rgba(255, 255, 255, 0.1);
+  --node-delete-danger: #a94848;
+  --node-delete-danger-hover: #bc5555;
+  background: rgba(0, 0, 0, 0.64);
+}
+
+.node-delete-dialog__panel {
+  width: min(430px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid var(--node-delete-panel-border);
+  border-radius: 16px;
+  background: var(--node-delete-panel);
+  color: var(--node-delete-heading);
+  box-shadow: var(--node-delete-panel-shadow);
+  backdrop-filter: blur(28px) saturate(118%);
+  -webkit-backdrop-filter: blur(28px) saturate(118%);
+  animation: node-delete-panel-in 180ms cubic-bezier(0.2, 0.82, 0.32, 1) both;
+}
+
+.node-delete-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--node-delete-divider);
+}
+
+.node-delete-dialog__icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(190, 74, 74, 0.2);
+  border-radius: 11px;
+  background: rgba(190, 74, 74, 0.09);
+  color: #bd5353;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.dark .node-delete-dialog__icon {
+  border-color: rgba(232, 112, 112, 0.2);
+  background: rgba(214, 80, 80, 0.1);
+  color: #e27b7b;
+}
+
+.node-delete-dialog__icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.node-delete-dialog__heading-copy {
+  min-width: 0;
+}
+
+.node-delete-dialog__heading-copy h2 {
+  margin: 0;
+  color: var(--node-delete-heading);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.node-delete-dialog__heading-copy p {
+  margin: 3px 0 0;
+  color: var(--node-delete-muted);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.node-delete-dialog__body {
+  padding: 18px 20px 16px;
+}
+
+.node-delete-dialog__label {
+  margin: 0 0 9px;
+  color: var(--node-delete-copy);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.node-delete-dialog__target-list {
+  max-height: 176px;
+  overflow-y: auto;
+  border: 1px solid var(--node-delete-target-border);
+  border-radius: 12px;
+  background: var(--node-delete-target);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  scrollbar-color: rgba(128, 112, 96, 0.34) transparent;
+  scrollbar-width: thin;
+}
+
+.dark .node-delete-dialog__target-list {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.node-delete-dialog__target {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 11px 13px;
+}
+
+.node-delete-dialog__node-mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--node-delete-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--node-delete-accent) 10%, transparent);
+}
+
+.node-delete-dialog__target p,
+.node-delete-dialog__descendant p {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.node-delete-dialog__target p {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: var(--node-delete-copy);
+  font-size: 11px;
+}
+
+.node-delete-dialog__target strong {
+  color: var(--node-delete-accent);
+  font-weight: 800;
+}
+
+.node-delete-dialog__target p > span {
+  color: var(--node-delete-muted);
+}
+
+.node-delete-dialog__descendants {
+  margin: 0 12px 12px 25px;
+  padding: 4px 0 4px 10px;
+  border-left: 1px solid var(--node-delete-divider);
+}
+
+.node-delete-dialog__descendant {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 4px 0;
+  color: var(--node-delete-muted);
+}
+
+.node-delete-dialog__descendant .material-symbols-outlined {
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.node-delete-dialog__descendant p {
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.node-delete-dialog__warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 11px 1px 0;
+  color: #b64f4f;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.dark .node-delete-dialog__warning {
+  color: #d87979;
+}
+
+.node-delete-dialog__warning .material-symbols-outlined {
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.node-delete-dialog__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+.node-delete-dialog__button {
+  display: inline-flex;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.node-delete-dialog__button:hover {
+  transform: translateY(-1px);
+}
+
+.node-delete-dialog__button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.node-delete-dialog__button:focus-visible {
+  outline: 2px solid rgba(196, 113, 39, 0.62);
+  outline-offset: 2px;
+}
+
+.dark .node-delete-dialog__button:focus-visible {
+  outline-color: rgba(235, 237, 240, 0.62);
+}
+
+.node-delete-dialog__button--cancel {
+  border: 1px solid var(--node-delete-target-border);
+  background: var(--node-delete-cancel);
+  color: var(--node-delete-copy);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.node-delete-dialog__button--cancel:hover {
+  border-color: color-mix(in srgb, var(--node-delete-accent) 26%, var(--node-delete-target-border));
+  background: var(--node-delete-cancel-hover);
+  color: var(--node-delete-heading);
+}
+
+.dark .node-delete-dialog__button--cancel {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.node-delete-dialog__button--danger {
+  border: 1px solid rgba(111, 33, 33, 0.32);
+  background: var(--node-delete-danger);
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(142, 45, 45, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.node-delete-dialog__button--danger:hover {
+  background: var(--node-delete-danger-hover);
+  box-shadow: 0 9px 22px rgba(142, 45, 45, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.node-delete-dialog__button--danger .material-symbols-outlined {
+  font-size: 15px;
+}
+
+@keyframes node-delete-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes node-delete-panel-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-delete-dialog,
+  .node-delete-dialog__panel {
+    animation: none;
+  }
+
+  .node-delete-dialog__button {
+    transition: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .node-delete-dialog__header,
+  .node-delete-dialog__body {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .node-delete-dialog__actions {
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "research",
+  "name": "Research",
+  "description": "Research communication system balancing evidence, methodology, diagrams, and readable scientific captions.",
+  "localized_name": "科研证据",
+  "localized_description": "面向科研汇报和论文答辩的证据型版式，强调方法、结果、图注和可复核的信息层级。",
+  "localized_tags": ["科研", "证据", "方法", "图表"],
+  "palette": ["#102A43", "#E6F6FF", "#2F80ED", "#F2994A"],
+  "fonts": ["Aptos", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_hypothesis_left_figure_right","description":"Scientific cover with hypothesis statement and a protected figure area.","components":[{"id":"figure","position":{"x":760,"y":80},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":440,"height":560},"fit":"contain"}]}]},
+    {"id":"research_question_three_columns","description":"Research question split into context, gap, and contribution columns.","components":[]},
+    {"id":"method_process_diagram","description":"Methodology process flow with numbered stages and compact explanatory notes.","components":[]},
+    {"id":"evidence_chart_caption","description":"Primary chart with a visible takeaway headline and an anchored figure caption.","components":[]},
+    {"id":"microscopy_image_grid","description":"Image grid for microscopy, experiment samples, or visual result comparisons.","components":[{"id":"micro-grid","position":{"x":80,"y":120},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":520,"height":500},"fit":"contain"}]}]},
+    {"id":"comparison_control_treatment","description":"Control versus treatment comparison with aligned labels and evidence notes.","components":[]},
+    {"id":"figure_with_callout_rail","description":"Large figure with a right-side callout rail for variables, limits, and interpretation.","components":[{"id":"main-figure","position":{"x":60,"y":110},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":760,"height":500},"fit":"contain"}]}]},
+    {"id":"conclusion_next_experiment","description":"Conclusion, limitations, and next experiment arranged as three decision blocks.","components":[]}
+  ]
+}

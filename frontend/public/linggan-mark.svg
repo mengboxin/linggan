@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Linggan</title>
+  <desc id="desc">An open composition frame holding a four-point creative spark.</desc>
+  <g transform="translate(4.7 7.5) scale(.35)" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 48V20a12 12 0 0 1 12-12h28M100 8h28a12 12 0 0 1 12 12v28M140 92v28a12 12 0 0 1-12 12h-28M56 132H28a12 12 0 0 1-12-12V92"/>
+    <path transform="translate(2 -6)" d="m76 39 8 29 29 8-29 8-8 29-8-29-29-8 29-8Z"/>
+  </g>
+</svg>

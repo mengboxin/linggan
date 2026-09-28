@@ -1,0 +1,105 @@
+:root {
+  --app-topbar-height: 48px;
+  --app-topbar-reveal-height: 7px;
+}
+
+.app-topbar-page {
+  --app-topbar-reserved-height: var(--app-topbar-height);
+  --app-content-top: var(--app-topbar-reserved-height);
+  --app-workspace-top: calc(var(--app-topbar-reserved-height) + 8px);
+}
+
+html[data-topbar-pinned='false'] .app-topbar-page {
+  --app-topbar-reserved-height: 0px;
+}
+
+.floating-topbar {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  min-height: var(--floating-topbar-height, var(--app-topbar-height));
+  transition: top 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+  will-change: top;
+}
+
+.floating-topbar[data-floating-enabled='true'][data-pinned='false'][data-visible='false'] {
+  top: calc(-1 * var(--floating-topbar-height, var(--app-topbar-height)));
+  box-shadow: none !important;
+}
+
+.floating-topbar-reveal-zone {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 51;
+  height: var(--app-topbar-reveal-height);
+  cursor: ns-resize;
+}
+
+.floating-topbar-reveal-zone > span {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 34px;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--app-muted) 52%, transparent);
+  opacity: 0.52;
+  transform: translateX(-50%);
+  transition: width 160ms ease, opacity 160ms ease;
+}
+
+.floating-topbar-reveal-zone:hover > span {
+  width: 48px;
+  opacity: 0.9;
+}
+
+.topbar-pin-button {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--app-muted);
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.topbar-pin-button:hover,
+.topbar-pin-button:focus-visible {
+  outline: none;
+  background: var(--app-control-hover);
+  color: var(--app-primary);
+}
+
+.topbar-pin-button[aria-pressed='true'] {
+  color: var(--app-primary);
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 640px) {
+  html[data-topbar-pinned='false'] .app-topbar-page {
+    --app-topbar-reserved-height: var(--app-topbar-height);
+  }
+
+  .floating-topbar {
+    top: 0 !important;
+    transition: none;
+  }
+
+  .floating-topbar-reveal-zone,
+  .topbar-pin-button {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-topbar,
+  .floating-topbar-reveal-zone > span,
+  .topbar-pin-button {
+    transition: none;
+  }
+}

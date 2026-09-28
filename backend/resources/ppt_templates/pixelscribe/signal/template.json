@@ -1,0 +1,20 @@
+{
+  "id": "signal",
+  "name": "Signal",
+  "description": "Dark signal-driven presentation system for strategy, market intelligence, operations, and high-stakes decision rooms.",
+  "localized_name": "信号决策",
+  "localized_description": "面向战略、市场情报和运营决策的深色信号体系，用指标、对比和关键判断制造清晰的视觉焦点。",
+  "localized_tags": ["深色", "战略", "指标", "决策"],
+  "palette": ["#08111F", "#D6F5FF", "#00B8D9", "#FFB547"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_signal_title_grid","description":"Dark cover with a single signal statement and a quiet grid field.","components":[]},
+    {"id":"hero_metric_with_context","description":"One dominant metric, one context line, and a compact diagnostic strip.","components":[]},
+    {"id":"dashboard_signal_cards","description":"Dense but legible dashboard with three signals and one decision banner.","components":[]},
+    {"id":"matrix_risk_opportunity","description":"Risk and opportunity matrix with highlighted decision quadrant.","components":[]},
+    {"id":"timeline_incident_response","description":"Incident or response timeline with severity markers and owners.","components":[]},
+    {"id":"case_study_image_panel","description":"Case study split with a large visual panel and measurable outcome cards.","components":[{"id":"case-image","position":{"x":720,"y":80},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":480,"height":560},"fit":"cover"}]}]},
+    {"id":"quote_decision_statement","description":"Decision statement with a short quote, source, and implication block.","components":[]},
+    {"id":"closing_next_move","description":"Closing slide that turns the evidence into one next move and owner.","components":[]}
+  ]
+}

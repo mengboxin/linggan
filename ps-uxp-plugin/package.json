@@ -1,0 +1,10 @@
+{
+  "name": "pixelscribe-ps-sync",
+  "version": "1.0.0",
+  "description": "PixelScribe Photoshop UXP 同步插件",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "UNLICENSED",
+  "private": true
+}

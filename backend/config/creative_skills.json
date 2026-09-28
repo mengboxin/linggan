@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "assets.inspect",
+      "modules": ["image_edit", "image_generate", "poster", "ppt", "sci_fig"],
+      "label": "素材检查",
+      "description": "识别附件、当前作品、尺寸与可复用视觉参考。",
+      "executor": "builtin"
+    },
+    {
+      "id": "references.bind",
+      "modules": ["image_edit", "image_generate", "poster", "ppt"],
+      "label": "参考图绑定",
+      "description": "锁定当前图和编号参考图的顺序与作用。",
+      "executor": "specialist"
+    },
+    {
+      "id": "documents.extract",
+      "modules": ["poster", "ppt", "sci_fig"],
+      "label": "文档提炼",
+      "description": "从 PDF、PPT、表格中提炼事实、数据与素材。",
+      "executor": "specialist"
+    },
+    {
+      "id": "visual.plan",
+      "modules": ["image_edit", "image_generate", "poster", "ppt", "sci_fig"],
+      "label": "创作规划",
+      "description": "组织信息层级、视觉方向、尺寸约束与交付标准。",
+      "executor": "specialist"
+    },
+    {
+      "id": "quality.verify",
+      "modules": ["image_edit", "image_generate", "poster", "ppt", "sci_fig"],
+      "label": "结果校验",
+      "description": "核验参考图遵循、文本完整性、尺寸和交付文件。",
+      "executor": "specialist"
+    }
+  ]
+}

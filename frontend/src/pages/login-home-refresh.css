@@ -1,0 +1,74 @@
+.login-home--pixel {
+  background:
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--app-panel-raised) 74%, transparent), transparent 30%),
+    linear-gradient(180deg, var(--app-bg) 0%, var(--app-workspace) 62%, var(--app-canvas) 100%) !important;
+}
+
+.login-home--pixel .login-home-grid {
+  opacity: 0.26;
+  background-size: 38px 38px;
+}
+
+.login-home--foxapi {
+  background: var(--app-bg) !important;
+}
+
+.login-home--pixel .login-home-artwork {
+  opacity: calc(0.08 * var(--app-decorative-art-opacity));
+  filter: var(--app-decorative-art-filter) !important;
+  mix-blend-mode: var(--app-decorative-art-blend-mode);
+}
+
+.login-home--pixel h1 > span {
+  display: none;
+}
+
+.login-home--pixel [data-login-reveal] {
+  text-shadow: 0 1px color-mix(in srgb, var(--app-panel-raised) 76%, transparent);
+}
+
+@keyframes login-intro-failsafe-reveal {
+  to { visibility: visible; }
+}
+
+.login-home--pixel[data-landing-intro='pending'] :is([data-brand-mark], [data-brand-name], [data-login-reveal]) {
+  visibility: hidden;
+  animation: login-intro-failsafe-reveal 0s 2s forwards;
+}
+
+.login-home--pixel [data-login-stage] {
+  position: relative;
+}
+
+.login-home--pixel [data-login-stage]::before {
+  position: absolute;
+  z-index: -1;
+  inset: 7% 2% 2%;
+  content: '';
+  border-radius: 28px;
+  background: radial-gradient(circle at 48% 64%, color-mix(in srgb, var(--app-primary) 19%, transparent), transparent 45%), linear-gradient(112deg, color-mix(in srgb, var(--app-dot-active) 10%, transparent), transparent 38%, color-mix(in srgb, var(--app-muted) 8%, transparent));
+  filter: blur(26px);
+}
+
+.login-home--pixel .login-home-spectrum--light {
+  opacity: 0.82;
+}
+
+.login-home--pixel .login-home-spectrum__ribbon--warm { opacity: 0.6 !important; }
+.login-home--pixel .login-home-spectrum__ribbon--cool { opacity: 0.46 !important; }
+.login-home--pixel .login-home-spectrum__ribbon--violet { opacity: 0.36 !important; }
+
+.login-home--dark.login-home--pixel {
+  background: linear-gradient(180deg, var(--app-bg) 0%, var(--app-workspace) 100%) !important;
+}
+
+.login-home--dark.login-home--pixel .login-home-spectrum { display: none; }
+.login-home--dark.login-home--pixel .login-home-artwork { opacity: calc(0.11 * var(--app-decorative-art-opacity)); }
+.login-home--dark.login-home--pixel .interactive-dot-field__ambient { display: none; }
+.login-home--dark.login-home--pixel .interactive-dot-field__base { opacity: .28; animation: none; }
+.login-home--dark.login-home--pixel .login-home-grid { opacity: .14; }
+
+@media (max-width: 900px) {
+  .login-home--pixel .login-home-artwork { opacity: calc(0.045 * var(--app-decorative-art-opacity)); }
+  .login-home--pixel [data-login-stage]::before { inset: 4% 0 0; }
+}

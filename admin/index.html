@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>像素印记 管理后台</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontSize: {
+              xs:   ['0.7rem',   { lineHeight: '1.1rem' }],
+              sm:   ['0.8rem',   { lineHeight: '1.25rem' }],
+              base: ['0.875rem', { lineHeight: '1.4rem' }],
+              lg:   ['1rem',     { lineHeight: '1.6rem' }],
+              xl:   ['1.125rem', { lineHeight: '1.75rem' }],
+              '2xl':['1.35rem',  { lineHeight: '1.9rem' }],
+              '3xl':['1.65rem',  { lineHeight: '2.1rem' }],
+            },
+            colors: {
+              bg:        '#0b1326',
+              surface:   '#131b2e',
+              'surface-high': '#1e2740',
+              border:    'rgba(255,255,255,0.08)',
+              primary:   '#ddb7ff',
+              secondary: '#5de6ff',
+              'on-surface': '#dae2fd',
+              muted:     '#64748b',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body { background: #0b1326; color: #dae2fd; font-family: 'Inter', sans-serif; font-size: 13px; }
+      ::-webkit-scrollbar { width: 5px; height: 5px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+      .input-field {
+        width: 100%;
+        background: #0b1326;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0.75rem;
+        padding: 0.625rem 1rem;
+        font-size: 0.9rem;
+        color: #dae2fd;
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .input-field:focus { border-color: rgba(221,183,255,0.4); }
+      .input-field::placeholder { color: #64748b; }
+      .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

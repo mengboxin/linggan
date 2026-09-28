@@ -1,0 +1,264 @@
+.canvas-flow-run-control {
+  position: relative;
+  display: inline-flex;
+  height: 32px;
+  align-items: stretch;
+  overflow: visible;
+  border: 1px solid var(--app-border);
+  border-radius: 9px;
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+  backdrop-filter: blur(18px) saturate(108%);
+  -webkit-backdrop-filter: blur(18px) saturate(108%);
+}
+
+.canvas-flow-run-primary,
+.canvas-flow-run-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: var(--app-text);
+  cursor: pointer;
+  outline: 0;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.canvas-flow-run-primary {
+  min-width: 74px;
+  gap: 6px;
+  border-radius: 8px 0 0 8px;
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.canvas-flow-run-trigger {
+  width: 27px;
+  border-left: 1px solid var(--app-border);
+  border-radius: 0 8px 8px 0;
+  color: var(--app-muted);
+}
+
+.canvas-flow-run-primary:hover:not(:disabled),
+.canvas-flow-run-trigger:hover:not(:disabled),
+.canvas-flow-run-primary:focus-visible,
+.canvas-flow-run-trigger:focus-visible {
+  background: var(--app-control-hover);
+  color: var(--app-text);
+}
+
+.canvas-flow-run-primary:focus-visible,
+.canvas-flow-run-trigger:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--app-primary);
+}
+
+.canvas-flow-run-primary:disabled,
+.canvas-flow-run-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
+.canvas-flow-run-control.is-running {
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+  background: var(--app-primary-soft);
+}
+
+.canvas-flow-run-control.is-running .canvas-flow-run-primary {
+  min-width: 108px;
+  border-radius: 8px;
+}
+
+.canvas-flow-run-spinner {
+  animation: canvas-flow-run-spin 900ms linear infinite;
+}
+
+.canvas-flow-run-menu {
+  position: absolute;
+  top: calc(100% + 9px);
+  right: 0;
+  z-index: 90;
+  width: 296px;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: 14px;
+  background: var(--app-glass-strong);
+  padding: 6px;
+  box-shadow: var(--app-shadow-raised);
+  backdrop-filter: blur(24px) saturate(108%);
+  -webkit-backdrop-filter: blur(24px) saturate(108%);
+}
+
+.canvas-flow-run-menu-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 8px 8px;
+}
+
+.canvas-flow-run-menu-heading strong {
+  color: var(--app-text);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.canvas-flow-run-menu-heading span {
+  color: var(--app-muted);
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.canvas-flow-run-menu > button {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  padding: 7px 8px;
+  color: var(--app-text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.canvas-flow-run-menu > button:hover:not(:disabled),
+.canvas-flow-run-menu > button:focus-visible {
+  background: var(--app-control-hover);
+  outline: 0;
+  transform: translateX(2px);
+}
+
+.canvas-flow-run-menu > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.canvas-flow-run-menu-icon {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: 9px;
+  background: var(--app-panel-soft);
+  color: var(--app-primary);
+}
+
+.canvas-flow-run-menu > button > span:last-child {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.canvas-flow-run-menu > button strong {
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.canvas-flow-run-menu > button small {
+  color: var(--app-muted);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.canvas-flow-run-menu-error {
+  margin: 5px 5px 2px;
+  border-top: 1px solid rgba(244, 63, 94, 0.18);
+  padding: 8px 4px 3px;
+  color: #fb7185;
+  font-size: 9px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.light .canvas-flow-run-control {
+  border-color: var(--app-border);
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+}
+
+.light .canvas-flow-run-primary {
+  color: var(--app-text);
+}
+
+.light .canvas-flow-run-trigger {
+  border-left-color: var(--app-border);
+  color: var(--app-muted);
+}
+
+.light .canvas-flow-run-primary:hover:not(:disabled),
+.light .canvas-flow-run-trigger:hover:not(:disabled),
+.light .canvas-flow-run-primary:focus-visible,
+.light .canvas-flow-run-trigger:focus-visible {
+  background: var(--app-control-hover);
+  color: var(--app-text);
+}
+
+.light .canvas-flow-run-control.is-running {
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+  background: var(--app-primary-soft);
+}
+
+.light .canvas-flow-run-menu {
+  border-color: var(--app-border);
+  background: var(--app-glass-strong);
+  box-shadow: var(--app-shadow-raised);
+}
+
+.light .canvas-flow-run-menu-heading strong,
+.light .canvas-flow-run-menu > button {
+  color: var(--app-text);
+}
+
+.light .canvas-flow-run-menu-heading span,
+.light .canvas-flow-run-menu > button small {
+  color: var(--app-muted);
+}
+
+.light .canvas-flow-run-menu > button:hover:not(:disabled),
+.light .canvas-flow-run-menu > button:focus-visible {
+  background: var(--app-control-hover);
+}
+
+.light .canvas-flow-run-menu-icon {
+  border-color: var(--app-border);
+  background: var(--app-panel-soft);
+  color: var(--app-primary);
+}
+
+@keyframes canvas-flow-run-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1279px) {
+  .canvas-flow-run-primary {
+    min-width: 36px;
+    padding: 0 8px;
+  }
+
+  .canvas-flow-run-label {
+    display: none;
+  }
+
+  .canvas-flow-run-control.is-running .canvas-flow-run-primary {
+    min-width: 55px;
+  }
+}
+
+@media (max-width: 767px) {
+  .canvas-flow-run-menu {
+    width: min(286px, calc(100vw - 16px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas-flow-run-spinner {
+    animation-duration: 1800ms;
+  }
+}

@@ -1,0 +1,49 @@
+name: ✨ 功能建议
+description: 提出一个明确的创作场景、工作流改进或产品能力建议
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        好建议比“加一个按钮”更有价值：请描述你真正想完成的创作任务，以及现有流程在哪一步受阻。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你想解决什么问题？
+      description: 描述具体人群、场景和目前的阻碍。
+      placeholder: 例如：我制作系列海报时，需要反复手工复用同一组风格、字体和留白规则。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你的建议是什么？
+      description: 说明理想流程或交互；可以附手绘、参考链接或示例。
+    validations:
+      required: true
+  - type: dropdown
+    id: audience
+    attributes:
+      label: 受益人群
+      options:
+        - 个人创作者
+        - 设计师 / 内容团队
+        - 学生 / 教师
+        - 科研人员
+        - 运营 / 市场团队
+        - 开发者 / 部署者
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 你尝试过哪些替代方案？（可选）
+      description: 这能帮助我们判断优先级、兼容性和已有工具的不足。
+  - type: textarea
+    id: impact
+    attributes:
+      label: 成功后会带来什么价值？（可选）
+      placeholder: 例如：每次制作可少花 20 分钟；或让团队能复用同一套工作流。

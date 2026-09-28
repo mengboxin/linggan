@@ -1,0 +1,62 @@
+.recharge-page {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.recharge-account-layout {
+  align-items: start;
+}
+
+.recharge-account-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recharge-account-sidebar {
+  box-shadow: var(--app-shadow);
+}
+
+.recharge-dashboard-card {
+  scroll-margin-top: 84px;
+}
+
+.recharge-dashboard-card,
+.recharge-account-content [data-billing-section='membership'],
+.recharge-account-content [data-billing-section='credits'],
+.recharge-account-content [data-billing-section='orders'] {
+  scroll-margin-top: 84px;
+}
+
+.recharge-account-content [role='tablist'] {
+  position: sticky;
+  top: 68px;
+  z-index: 30;
+  align-self: flex-start;
+  -webkit-backdrop-filter: blur(20px) saturate(1.18);
+  backdrop-filter: blur(20px) saturate(1.18);
+  box-shadow: var(--app-shadow-soft);
+}
+
+.recharge-account-content > [data-billing-section='membership'],
+.recharge-account-content > [data-billing-section='credits'] {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .recharge-account-content {
+    gap: 16px;
+  }
+
+  .recharge-account-content [role='tablist'] {
+    top: 108px;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .recharge-account-content [role='tablist'] {
+    top: 106px;
+  }
+}

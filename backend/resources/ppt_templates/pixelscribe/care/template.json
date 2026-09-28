@@ -1,0 +1,20 @@
+{
+  "id": "care",
+  "name": "医疗健康",
+  "description": "用于医疗服务、临床项目、公共健康和以人为中心服务的平静证据型演示体系。",
+  "localized_name": "医疗健康",
+  "localized_description": "面向医疗服务、临床项目与健康传播的证据型版式，兼顾专业可信度和以人为中心的阅读体验。",
+  "localized_tags": ["医疗", "健康", "临床", "公共卫生"],
+  "palette": ["#123B4A", "#F7FBF8", "#48A9A6", "#E18B6B"],
+  "fonts": ["Aptos", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_patient_outcome","description":"以平静图片框和明确照护目标构成以人为中心的封面。","components":[{"id":"patient-image","position":{"x":770,"y":90},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":390,"height":520},"fit":"cover"}]}]},
+    {"id":"care_need_population_context","description":"通过关键需求、服务缺口与人群定义交代背景。","components":[]},
+    {"id":"clinical_pathway_steps","description":"用接诊、干预、监测和随访阶段呈现临床路径。","components":[]},
+    {"id":"outcomes_evidence_dashboard","description":"以一个主结果和三条临床证据组织结果仪表盘。","components":[]},
+    {"id":"patient_journey_moments","description":"用四个照护时刻和服务交接说明患者旅程。","components":[{"id":"journey-image","position":{"x":70,"y":150},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":610,"height":360},"fit":"cover"}]}]},
+    {"id":"safety_risk_mitigation","description":"用清晰矩阵呈现安全风险与缓解措施。","components":[]},
+    {"id":"implementation_team_roles","description":"展示学科、角色、节奏与反馈闭环的实施计划。","components":[]},
+    {"id":"closing_care_commitment","description":"以明确下一步和克制证据陈述收束照护承诺。","components":[]}
+  ]
+}

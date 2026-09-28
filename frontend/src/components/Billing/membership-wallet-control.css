@@ -1,0 +1,148 @@
+.membership-wallet {
+  position: relative;
+  z-index: 70;
+  color: var(--app-text, #3f352d);
+}
+
+/* Keep the trigger and the floating wallet in one continuous hover zone. */
+.membership-wallet.is-open::after {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  width: min(350px, calc(100vw - 24px));
+  height: 12px;
+  content: '';
+}
+
+.membership-wallet__trigger {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 9px 4px 6px;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 28%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--app-glass-strong) 78%, transparent);
+  color: var(--app-text);
+  box-shadow: var(--app-shadow-soft);
+  backdrop-filter: blur(18px) saturate(1.12);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.membership-wallet__trigger:hover,
+.membership-wallet.is-open .membership-wallet__trigger {
+  border-color: color-mix(in srgb, var(--app-primary) 52%, transparent);
+  background: color-mix(in srgb, var(--app-glass-strong) 90%, transparent);
+  transform: translateY(-1px);
+}
+
+.membership-wallet__trigger-icon,
+.membership-wallet__emblem {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: none;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--app-primary-soft);
+  color: var(--app-primary);
+}
+
+.membership-wallet__trigger-copy {
+  display: grid;
+  min-width: 0;
+  text-align: left;
+  line-height: 1.05;
+}
+
+.membership-wallet__trigger-copy strong { font-size: 10px; font-weight: 850; white-space: nowrap; }
+.membership-wallet__trigger-copy span { margin-top: 3px; color: var(--app-muted); font-size: 9px; white-space: nowrap; }
+.membership-wallet__compact-value { font-size: 10px; font-weight: 850; font-variant-numeric: tabular-nums; }
+.membership-wallet__chevron { color: var(--app-muted); transition: transform .2s ease; }
+.membership-wallet.is-open .membership-wallet__chevron { transform: rotate(180deg); }
+
+.membership-wallet__popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: min(350px, calc(100vw - 24px));
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--app-border) 78%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--app-glass-strong) 92%, transparent);
+  box-shadow: var(--app-shadow-raised);
+  backdrop-filter: blur(26px) saturate(1.18);
+  animation: membership-wallet-enter .18s ease-out both;
+}
+
+.membership-wallet__popover::before {
+  content: '';
+  position: absolute;
+  inset: -12px 0 auto;
+  height: 12px;
+}
+
+.membership-wallet-panel {
+  min-width: 0;
+}
+
+.membership-wallet-panel.is-disabled {
+  opacity: .62;
+}
+
+@keyframes membership-wallet-enter {
+  from { opacity: 0; transform: translateY(-5px) scale(.985); }
+}
+
+.membership-wallet__heading { display: flex; align-items: center; gap: 10px; }
+.membership-wallet__heading > span:last-child { display: grid; gap: 3px; }
+.membership-wallet__heading strong { font-size: 13px; }
+.membership-wallet__heading small,
+.membership-wallet__queued small { color: var(--app-muted); font-size: 10px; line-height: 1.45; }
+
+.membership-wallet__quota {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 18%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
+}
+.membership-wallet__quota-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; }
+.membership-wallet__quota-line strong { font-variant-numeric: tabular-nums; }
+.membership-wallet__progress { height: 5px; margin-top: 9px; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--app-border) 70%, transparent); }
+.membership-wallet__progress span { display: block; height: 100%; border-radius: inherit; background: var(--app-primary); transition: width .35s ease; }
+.membership-wallet__expiry { display: flex; align-items: center; gap: 5px; margin-top: 7px; color: var(--app-muted); font-size: 9px; }
+
+.membership-wallet__section-label { margin: 12px 0 6px; color: var(--app-muted); font-size: 9px; font-weight: 800; }
+.membership-wallet__source-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 4px; border-radius: 8px; background: color-mix(in srgb, var(--app-border) 28%, transparent); }
+.membership-wallet__source-switch button { display: flex; min-width: 0; height: 34px; align-items: center; justify-content: center; gap: 5px; border: 1px solid transparent; border-radius: 6px; color: var(--app-muted); font-size: 10px; font-weight: 750; transition: .18s ease; }
+.membership-wallet__source-switch button b { font-variant-numeric: tabular-nums; }
+.membership-wallet__source-switch button.is-active { border-color: color-mix(in srgb, var(--app-primary) 25%, transparent); background: var(--app-panel-raised); color: var(--app-primary); box-shadow: var(--app-shadow-soft); }
+.membership-wallet__source-switch button:disabled { cursor: not-allowed; opacity: .42; }
+
+.membership-wallet__cards { display: grid; gap: 5px; }
+.membership-wallet__cards button { display: grid; grid-template-columns: 18px minmax(0, 1fr) 16px; align-items: center; gap: 7px; width: 100%; padding: 8px; border: 1px solid var(--app-border); border-radius: 7px; color: var(--app-text); text-align: left; background: var(--app-control); }
+.membership-wallet__cards button.is-active { border-color: color-mix(in srgb, var(--app-primary) 42%, transparent); background: var(--app-primary-soft); color: var(--app-primary); }
+.membership-wallet__cards button span { display: grid; min-width: 0; gap: 2px; }
+.membership-wallet__cards button strong { overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.membership-wallet__cards button small { color: var(--app-muted); font-size: 9px; }
+
+.membership-wallet__queued { margin-top: 8px; padding-top: 1px; border-top: 1px solid color-mix(in srgb, var(--app-border) 56%, transparent); }
+.membership-wallet__queued > div:not(.membership-wallet__section-label) { display: grid; gap: 2px; padding: 6px 2px; font-size: 10px; }
+.membership-wallet__error { margin-top: 8px; color: #dc4d4d; font-size: 9px; }
+.membership-wallet__manage { width: 100%; height: 32px; margin-top: 10px; border: 1px solid color-mix(in srgb, var(--app-primary) 24%, transparent); border-radius: 7px; color: var(--app-primary); font-size: 10px; font-weight: 800; }
+.membership-wallet__manage:hover { background: var(--app-primary-soft); }
+
+@media (max-width: 767px) {
+  .membership-wallet__trigger { min-height: 32px; padding: 3px 7px 3px 4px; border-radius: 999px; }
+  .membership-wallet__trigger-icon { width: 24px; height: 24px; border-radius: 50%; }
+  .membership-wallet__popover {
+    position: fixed;
+    top: 54px;
+    right: 8px;
+    width: min(350px, calc(100vw - 16px));
+    background: var(--app-panel);
+    backdrop-filter: none;
+  }
+}

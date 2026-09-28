@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "id": "presenton",
+      "project": "Presenton",
+      "repo": "presenton/presenton",
+      "revision": "bed1fc6c31b94d844191893a1c212d8fbe0f6d0b",
+      "license": "Apache-2.0",
+      "template_path": "templates/{template}/template.json",
+      "thumbnail_path": "templates/{template}/static/thumbnail.png",
+      "canvas_width": 1280,
+      "canvas_height": 720,
+      "templates": ["dynamic", "executive", "general", "modern", "momentum", "standard", "swift"]
+    },
+    {
+      "id": "pixelscribe",
+      "kind": "native",
+      "project": "PixelScribe Studio",
+      "url": "https://image.foxapi.cn/ppt",
+      "revision": "34cb373",
+      "license": "PixelScribe Original",
+      "attribution": "Original PixelScribe Studio layouts.",
+      "canvas_width": 1280,
+      "canvas_height": 720,
+      "templates": ["editorial", "research", "product", "signal", "curator", "venture", "care", "academy"]
+    }
+  ]
+}

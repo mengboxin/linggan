@@ -1,0 +1,93 @@
+# 参考项目源码（仅本地研究用，禁止提交到仓库 — R13.7）
+references/
+output/
+demos/
+
+admin/node_modules/
+admin/dist/
+.cache/
+.hypothesis/
+.pytest_cache/
+tmp/
+frontend/.vite-dev.*.log
+
+desktop/node_modules/
+desktop/package-lock.json
+desktop/dist-electron/
+desktop/renderer/
+desktop/.env.r2.local
+
+# Claude Code 本地配置
+.claude/
+pet/*.webp
+.wrangler/
+deploy/cloudflare/wrangler.asset-delivery.toml
+deploy/cloudflare/.dev.vars
+deploy/cloudflare/.wrangler/
+phone/
+backend.zip
+backend-*.zip
+backend-release.zip
+releases/
+migration_exports/
+outputs/
+ppt_jobs/
+sci_fig_jobs/
+project_versions/
+*.lnk
+# Local credentials and environment configuration. Public examples remain tracked.
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.*.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+secrets/
+credentials/
+backend/.runtime-logs/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Local Go build outputs
+go-controlplane/controlplane
+go-controlplane/*.exe
+
+# Vite dev server logs
+frontend/vite-dev.*.log
+frontend/.runtime-logs/
+.playwright-cli/
+.gstack/
+
+# Public repository hygiene: local generated assets and investigation notes.
+admin/dist-deploy/
+memory/
+release-baselines/
+
+# Intentionally excluded from the public Web-source branch. Keep these local
+# implementation and media directories out of future commits.
+.kiro/
+.vscode/
+.github/workflows/desktop-macos-release.yml
+desktop/
+deploy/cloudflare/
+docker/
+.dockerignore
+.env.docker.example
+docker-compose.yml
+docs/
+frontend/public/creative-library/
+frontend/public/creative-gallery/
+frontend/public/ppt-templates/
+frontend/public/landing/
+frontend/public/gallery-*.png
+frontend/public/showcase-*.*
+frontend/public/ppt-bg-scene.png
+frontend/public/ppt-scene-bg.png
+.tmp-portfolio-contact-sheet.png

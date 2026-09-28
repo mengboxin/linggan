@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.hypothesis/
+.pytest_cache/
+ppt_jobs/
+sci_fig_jobs/
+project_versions/
+backups/

@@ -1,0 +1,34 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+python-dotenv==1.0.1
+httpx==0.27.2
+Pillow>=11.2.1
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+python-jose[cryptography]==3.3.0
+bcrypt>=4.0.1
+aiosmtplib==5.1.0
+captcha==0.7.1
+redis>=5.0.0
+pydantic[email]>=2.0
+langgraph>=1.2,<2.0
+replicate==0.34.1
+scienceplots>=2.0.0
+psd-tools>=1.9.0
+pypdf>=5.0.0
+pypdfium2>=4.30.0
+openpyxl>=3.1.0
+cairosvg>=2.7.1
+svglib>=1.5.1
+reportlab>=4.2.0
+boto3>=1.34.0
+
+# ─── Lovart Canvas Upgrade 新增依赖 ───
+# OCR (PaddleOCR 本地推理，可选 - 不装则 fallback 到 GPT-4o)
+# paddleocr>=2.7.0
+# paddlepaddle>=2.5.0
+
+# PBT 测试
+hypothesis>=6.100.0
+pytest-asyncio>=0.23.0

@@ -1,0 +1,20 @@
+{
+  "id": "editorial",
+  "name": "Editorial",
+  "description": "Magazine-inspired editorial storytelling with a strong cover, generous whitespace, image-led pacing, and concise evidence blocks.",
+  "localized_name": "编辑叙事",
+  "localized_description": "杂志化的编辑叙事体系，用强封面、宽留白和图片节奏把复杂主题讲得更有质感。",
+  "localized_tags": ["编辑感", "杂志", "留白", "故事线"],
+  "palette": ["#171717", "#F4EFE7", "#D75A3A", "#8DA39A"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_image_left_title_right","description":"Full-bleed image-led cover with a protected right title column.","components":[{"id":"hero-image","position":{"x":0,"y":0},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":720,"height":720},"fit":"cover"}]}]},
+    {"id":"statement_title_with_accent","description":"Large editorial statement with a single accent rule and compact metadata.","components":[]},
+    {"id":"chapter_number_title_image","description":"Chapter divider with oversized number, short title, and a narrow image strip.","components":[{"id":"image-strip","position":{"x":880,"y":80},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":320,"height":560},"fit":"cover"}]}]},
+    {"id":"image_story_text_columns","description":"Large image story on the left with two editorial copy columns on the right.","components":[{"id":"story-image","position":{"x":0,"y":0},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":610,"height":720},"fit":"cover"}]}]},
+    {"id":"quote_portrait_caption","description":"Oversized quote with portrait frame and a short source caption.","components":[{"id":"portrait","position":{"x":850,"y":90},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":300,"height":420},"fit":"cover"}]}]},
+    {"id":"data_story_single_chart","description":"One evidence chart, one conclusion, and a restrained annotation rail.","components":[]},
+    {"id":"timeline_image_steps","description":"Horizontal timeline with a supporting image and three narrative steps.","components":[{"id":"timeline-image","position":{"x":850,"y":120},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":300,"height":260},"fit":"cover"}]}]},
+    {"id":"closing_question_full_bleed","description":"Full-bleed closing image with a protected question and next action zone.","components":[{"id":"closing-image","position":{"x":0,"y":0},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":1280,"height":720},"fit":"cover"}]}]}
+  ]
+}

@@ -1,0 +1,269 @@
+.canvas-flow-node-generator-config {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(72px, 0.75fr);
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.canvas-flow-node-generator-config label {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 5px;
+  height: 27px;
+  border: 1px solid var(--app-border);
+  border-radius: 7px;
+  padding: 0 5px 0 7px;
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+  backdrop-filter: blur(10px) saturate(115%);
+}
+
+.canvas-flow-node-generator-config label > span {
+  color: var(--app-muted);
+  font-size: 8px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.canvas-flow-node-select {
+  position: relative;
+  min-width: 0;
+}
+
+.canvas-flow-node-select-trigger {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: 25px;
+  border: 0;
+  padding: 0 1px;
+  background: transparent;
+  color: var(--app-text);
+  font-size: 9px;
+  font-weight: 750;
+  outline: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  text-align: left;
+}
+
+.canvas-flow-node-select-trigger:focus-visible {
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--app-primary) 28%, transparent);
+}
+
+.canvas-flow-node-select-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.canvas-flow-node-select-value {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.canvas-flow-node-select-menu {
+  position: fixed;
+  z-index: 10000;
+  min-width: 118px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 3px;
+  border: 1px solid #c8c8c8;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+.canvas-flow-node-select-menu button {
+  display: block;
+  width: 100%;
+  min-height: 25px;
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 7px;
+  background: #fff;
+  color: #171717;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 750;
+  text-align: left;
+}
+
+.canvas-flow-node-select-menu button:hover,
+.canvas-flow-node-select-menu button.is-active {
+  background: #121212;
+  color: #fff;
+}
+
+.canvas-flow-node-generator-footer {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  margin-top: 7px;
+}
+
+.canvas-flow-node-generator-footer .canvas-flow-node-status {
+  min-width: 0;
+  flex: 1;
+  margin-top: 0;
+}
+
+.canvas-flow-node-run,
+.canvas-flow-node-pause {
+  display: inline-flex;
+  height: 27px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--app-border);
+  border-radius: 7px;
+  padding: 0 8px;
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+  color: var(--app-text);
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease;
+}
+
+.canvas-flow-node-run:hover:not(:disabled),
+.canvas-flow-node-pause:hover:not(:disabled) {
+  border-color: var(--app-border-strong);
+  background: var(--app-control-hover);
+  transform: translateY(-1px);
+}
+
+.canvas-flow-node-run:focus-visible,
+.canvas-flow-node-pause:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--app-primary) 62%, transparent);
+  outline-offset: 2px;
+}
+
+.canvas-flow-node-run:disabled,
+.canvas-flow-node-pause:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.light .canvas-flow-node-generator-config label {
+  border-color: var(--app-border);
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+}
+
+.light .canvas-flow-node-generator-config label > span {
+  color: var(--app-muted);
+}
+
+.light .canvas-flow-node-generator-config select {
+  color: var(--app-text);
+}
+
+.light .canvas-flow-node-generator-config select option {
+  background: var(--app-panel-raised);
+  color: var(--app-text);
+}
+
+.light .canvas-flow-node-run,
+.light .canvas-flow-node-pause {
+  border-color: var(--app-border);
+  background: var(--app-control);
+  box-shadow: var(--app-shadow-soft);
+  color: var(--app-text);
+}
+
+.light .canvas-flow-node-run:hover:not(:disabled),
+.light .canvas-flow-node-pause:hover:not(:disabled) {
+  border-color: var(--app-border-strong);
+  background: var(--app-control-hover);
+}
+
+.canvas-flow-node-pause.is-active {
+  border-color: color-mix(in srgb, var(--app-primary) 32%, var(--app-border));
+  background: var(--app-primary-soft);
+  color: var(--app-primary);
+}
+
+.canvas-flow-node.is-paused .canvas-flow-node-surface {
+  border-color: color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
+  box-shadow: var(--app-shadow);
+}
+
+.canvas-flow-node .canvas-flow-node-status.is-paused {
+  color: var(--app-primary);
+}
+
+.light .canvas-flow-node-pause.is-active {
+  border-color: color-mix(in srgb, var(--app-primary) 32%, var(--app-border));
+  background: var(--app-primary-soft);
+  color: var(--app-primary);
+}
+
+.light .canvas-flow-node.is-paused .canvas-flow-node-surface {
+  border-color: color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
+  box-shadow: var(--app-shadow);
+}
+
+.light .canvas-flow-node .canvas-flow-node-status.is-paused {
+  color: var(--app-primary);
+}
+
+.canvas-flow-node-optimize {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--node-accent) 28%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--node-accent) 10%, transparent);
+  color: color-mix(in srgb, var(--node-accent) 70%, white 30%);
+  cursor: pointer;
+}
+
+.canvas-flow-node-optimize:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--node-accent) 18%, transparent);
+}
+
+.canvas-flow-node-optimize:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.canvas-flow-node.is-locked .canvas-flow-node-header input,
+.canvas-flow-node.is-locked .canvas-flow-node-text,
+.canvas-flow-node.is-locked .canvas-flow-node-generator-config select {
+  cursor: not-allowed;
+}
+
+.canvas-flow-node.is-locked .canvas-flow-node-generator-config select:disabled,
+.canvas-flow-node.is-locked .canvas-flow-node-header input:disabled,
+.canvas-flow-node.is-locked .canvas-flow-node-text:disabled {
+  opacity: 0.72;
+}
+
+.canvas-flow-extension-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas-flow-node-run {
+    transition: none;
+  }
+
+  .canvas-flow-node-pause {
+    transition: none;
+  }
+}

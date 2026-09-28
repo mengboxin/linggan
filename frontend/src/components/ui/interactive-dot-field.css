@@ -1,0 +1,123 @@
+.interactive-dot-field {
+  --dot-field-pointer-x: 50%;
+  --dot-field-pointer-y: 46%;
+  --dot-field-pointer-active: 0;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: paint;
+}
+
+.interactive-dot-field__ambient {
+  position: absolute;
+  top: -22rem;
+  left: -24rem;
+  width: 52rem;
+  height: 42rem;
+  border-radius: 48% 52% 44% 56% / 58% 45% 55% 42%;
+  background:
+    radial-gradient(ellipse at 34% 36%, color-mix(in srgb, var(--app-primary) 10%, transparent), transparent 36%),
+    radial-gradient(ellipse at 67% 54%, color-mix(in srgb, var(--app-muted) 7%, transparent), transparent 46%),
+    radial-gradient(ellipse at 48% 74%, color-mix(in srgb, var(--app-dot-active) 5%, transparent), transparent 54%);
+  filter: blur(30px);
+  opacity: 0.76;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  animation: interactive-dot-field-ambient-drift 23s ease-in-out infinite alternate;
+}
+
+.interactive-dot-field__base {
+  position: absolute;
+  inset: 0;
+  opacity: 0.76;
+  background-image: radial-gradient(circle, var(--app-dot, rgba(104, 88, 67, 0.34)) 1.12px, transparent 1.68px);
+  background-position: 0 0;
+  background-size: 20px 20px;
+  mask-image: none;
+  -webkit-mask-image: none;
+  animation: interactive-dot-field-breathe 7s ease-in-out infinite;
+}
+
+.interactive-dot-field__pointer-dots {
+  position: absolute;
+  inset: 0;
+  opacity: var(--dot-field-pointer-active);
+  transition: opacity 260ms ease;
+  will-change: opacity;
+}
+
+.interactive-dot-field__pointer-dots span {
+  position: absolute;
+  inset: 0;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.interactive-dot-field__pointer-dots-outer {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--app-dot-active) 58%, transparent) 1.18px, transparent 1.72px);
+  mask-image: radial-gradient(176px 176px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.26) 48%, transparent 90%);
+  -webkit-mask-image: radial-gradient(176px 176px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.26) 48%, transparent 90%);
+}
+
+.interactive-dot-field__pointer-dots-mid {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--app-dot-active) 76%, transparent) 1.34px, transparent 1.92px);
+  mask-image: radial-gradient(122px 122px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.34) 55%, transparent 94%);
+  -webkit-mask-image: radial-gradient(122px 122px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.34) 55%, transparent 94%);
+}
+
+.interactive-dot-field__pointer-dots-core {
+  background-image: radial-gradient(circle, var(--app-dot-active, rgba(68, 68, 76, 0.62)) 1.58px, transparent 2.18px);
+  mask-image: radial-gradient(64px 64px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 64%, transparent 100%);
+  -webkit-mask-image: radial-gradient(64px 64px at var(--dot-field-pointer-x) var(--dot-field-pointer-y), rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.4) 64%, transparent 100%);
+}
+
+.interactive-dot-field--neutral .interactive-dot-field__base {
+  background-image: radial-gradient(circle, var(--app-dot, rgba(228, 228, 231, 0.24)) 1.12px, transparent 1.68px);
+}
+
+.interactive-dot-field--neutral .interactive-dot-field__ambient {
+  background:
+    radial-gradient(ellipse at 34% 36%, color-mix(in srgb, var(--app-primary) 8%, transparent), transparent 37%),
+    radial-gradient(ellipse at 67% 54%, color-mix(in srgb, var(--app-muted) 6%, transparent), transparent 48%),
+    radial-gradient(ellipse at 48% 74%, color-mix(in srgb, var(--app-dot-active) 4%, transparent), transparent 56%);
+  opacity: 0.68;
+}
+
+.interactive-dot-field--neutral .interactive-dot-field__pointer-dots-outer {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--app-dot-active) 58%, transparent) 1.18px, transparent 1.72px);
+}
+
+.interactive-dot-field--neutral .interactive-dot-field__pointer-dots-mid {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--app-dot-active) 76%, transparent) 1.34px, transparent 1.92px);
+}
+
+@keyframes interactive-dot-field-breathe {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes interactive-dot-field-ambient-drift {
+  0% { transform: translate3d(-4%, -2%, 0) scale(0.92) rotate(-4deg); opacity: 0.54; }
+  36% { transform: translate3d(54vw, 14vh, 0) scale(1.08) rotate(5deg); opacity: 0.82; }
+  72% { transform: translate3d(33vw, 62vh, 0) scale(0.98) rotate(-3deg); opacity: 0.62; }
+  100% { transform: translate3d(76vw, 42vh, 0) scale(1.12) rotate(4deg); opacity: 0.78; }
+}
+
+.interactive-dot-field--neutral .interactive-dot-field__pointer-dots-core {
+  background-image: radial-gradient(circle, var(--app-dot-active, rgba(255, 255, 255, 0.62)) 1.58px, transparent 2.18px);
+}
+
+.interactive-dot-field--dot-only .interactive-dot-field__ambient,
+.interactive-dot-field--dot-only .interactive-dot-field__pointer-dots {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .interactive-dot-field__ambient { animation: none; opacity: 0.34; }
+  .interactive-dot-field__pointer-dots { display: none; }
+  .interactive-dot-field__base { animation: none; }
+}

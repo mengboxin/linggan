@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 5,
+  "id": "com.pixelscribe.ps-sync",
+  "name": "Linggan Sync",
+  "version": "1.0.0",
+  "main": "index.html",
+  "host": {
+    "app": "PS",
+    "minVersion": "24.0.0"
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "syncPanel",
+      "label": { "default": "Linggan Sync" },
+      "minimumSize": { "width": 240, "height": 320 },
+      "preferredDockedSize": { "width": 260, "height": 400 },
+      "preferredFloatingSize": { "width": 260, "height": 400 },
+      "icons": [
+        { "width": 23, "height": 23, "path": "icons/icon.png", "scale": [1, 2], "theme": ["darkest", "dark", "medium", "lightest", "light"] }
+      ]
+    }
+  ],
+  "icons": [
+    { "width": 48, "height": 48, "path": "icons/icon.png", "scale": [1, 2], "theme": ["darkest", "dark", "medium", "lightest", "light"], "species": ["generic"] }
+  ],
+  "requiredPermissions": {
+    "network": {
+      "domains": ["ws://localhost:9527", "ws://localhost:9528", "ws://localhost:9529", "ws://localhost:9530", "ws://localhost:9531"]
+    },
+    "localFileSystem": "request"
+  }
+}

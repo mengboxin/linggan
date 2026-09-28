@@ -1,0 +1,517 @@
+<!doctype html>
+<html class="light" data-surface="clean" data-accent="signature" lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="icon" type="image/svg+xml" href="/linggan-mark.svg?v=20260811-centered" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>灵感 - 从灵感到画面</title>
+
+    <script>
+      // Apply persisted appearance before the first paint. Keep this dependency-free
+      // and in sync with src/lib/theme.ts so route loading never flashes a stale theme.
+      (() => {
+        const lightSurfaces = ['warm', 'clean', 'mist']
+        const darkSurfaces = ['black', 'graphite', 'ash']
+        const accents = ['signature', 'cobalt', 'coral', 'forest']
+        const fallback = {
+          theme: 'light',
+          lightSurface: 'clean',
+          darkSurface: 'black',
+          lightAccent: 'signature',
+          darkAccent: 'signature',
+        }
+        let stored = {}
+        try {
+          const parsed = JSON.parse(localStorage.getItem('ps-appearance-v1') || '{}')
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) stored = parsed
+        } catch {}
+        let legacyTheme = null
+        try { legacyTheme = localStorage.getItem('ps-theme') } catch {}
+        const theme = stored.theme === 'dark' || stored.theme === 'light'
+          ? stored.theme
+          : legacyTheme === 'dark' || legacyTheme === 'light'
+            ? legacyTheme
+            : fallback.theme
+        const lightSurface = lightSurfaces.includes(stored.lightSurface) ? stored.lightSurface : fallback.lightSurface
+        const darkSurface = darkSurfaces.includes(stored.darkSurface) ? stored.darkSurface : fallback.darkSurface
+        const lightAccent = accents.includes(stored.lightAccent) ? stored.lightAccent : fallback.lightAccent
+        const darkAccent = accents.includes(stored.darkAccent) ? stored.darkAccent : fallback.darkAccent
+        const root = document.documentElement
+        root.classList.remove('dark', 'light')
+        root.classList.add(theme)
+        root.dataset.surface = theme === 'light' ? lightSurface : darkSurface
+        root.dataset.accent = theme === 'light' ? lightAccent : darkAccent
+        root.style.colorScheme = theme
+      })()
+    </script>
+
+    <!-- Tailwind CDN（本地版本，Electron file:// 协议兼容） -->
+    <script src="/tailwind.js?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Space Grotesk: 英文像素风 UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Noto Sans SC: 中文适配，与像素风协调 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <!-- 登录页字体：Manrope + Work Sans + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Work+Sans:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Material Symbols: 本地包加载，见 main.tsx import -->
+
+    <!-- Tailwind 配置（直接从设计稿复制） -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#d1daff",
+              "inverse-on-surface": "#2b3132",
+              "on-primary-fixed-variant": "#004f57",
+              "tertiary-container": "#b4bee4",
+              "on-secondary-container": "#3c2500",
+              "on-surface": "#dee3e4",
+              "surface-container-highest": "#303637",
+              "on-primary": "#00363c",
+              "surface-bright": "#343a3b",
+              "on-primary-container": "#00565f",
+              "on-tertiary-fixed": "#0f1a38",
+              "tertiary-fixed": "#dbe1ff",
+              "surface": "#0f1415",
+              "on-tertiary-fixed-variant": "#3c4665",
+              "on-surface-variant": "#bcc9cb",
+              "surface-dim": "#0f1415",
+              "surface-container-high": "#252b2c",
+              "secondary-container": "#c3841b",
+              "background": "#0f1415",
+              "tertiary-fixed-dim": "#bbc5eb",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "on-tertiary": "#252f4e",
+              "primary-fixed": "#93f1ff",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#633f00",
+              "on-error": "#690005",
+              "outline-variant": "#3d494b",
+              "surface-container": "#1b2122",
+              "on-primary-fixed": "#001f23",
+              "primary-container": "#4dd0e1",
+              "on-secondary-fixed": "#291800",
+              "inverse-primary": "#006973",
+              "surface-container-lowest": "#090f10",
+              "surface-variant": "#303637",
+              "secondary-fixed-dim": "#ffb954",
+              "inverse-surface": "#dee3e4",
+              "secondary-fixed": "#ffddb4",
+              "outline": "#869395",
+              "primary": "#6fecfe",
+              "primary-fixed-dim": "#56d7e9",
+              "surface-container-low": "#171d1e",
+              "on-tertiary-container": "#424d6d",
+              "secondary": "#ffb954",
+              "on-background": "#dee3e4",
+              "on-secondary": "#452b00",
+              "surface-tint": "#56d7e9"
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            spacing: {
+              "panel-padding": "12px",
+              "pixel-unit": "4px",
+              "header-height": "48px",
+              "sidebar-left-width": "260px",
+              "gutter": "16px",
+              "sidebar-right-width": "240px"
+            },
+            fontFamily: {
+              "headline-md": ["Space Grotesk"],
+              "headline-lg": ["Space Grotesk"],
+              "body-md": ["Space Grotesk"],
+              "label-sm": ["Space Grotesk"]
+            },
+            fontSize: {
+              "headline-md": ["18px", { lineHeight: "24px", letterSpacing: "-0.02em", fontWeight: "700" }],
+              "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.05em", fontWeight: "700" }],
+              "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }],
+              "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }]
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      :root,
+      html.light[data-surface="warm"] {
+        --app-bg: #f6f1e8;
+        --app-panel: #fffdf8;
+        --app-panel-raised: #ffffff;
+        --app-panel-soft: rgba(255, 248, 239, 0.72);
+        --app-border: rgba(123, 97, 61, 0.18);
+        --app-border-strong: rgba(123, 97, 61, 0.3);
+        --app-text: #322a20;
+        --app-muted: #7d6e5d;
+        --app-glass: rgba(248, 246, 242, 0.92);
+        --app-shadow: 0 22px 52px rgba(91, 61, 28, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+        --app-dot: rgba(197, 164, 126, 0.34);
+      }
+
+      html.light[data-surface="clean"] {
+        --app-bg: #f5f5f4;
+        --app-workspace: #f1f1f0;
+        --app-canvas: #fafafa;
+        --app-sidebar: #f8f8f7;
+        --app-panel: #ffffff;
+        --app-panel-raised: #ffffff;
+        --app-panel-soft: rgba(250, 250, 249, 0.82);
+        --app-panel-inset: #f1f1f0;
+        --app-control: rgba(255, 255, 255, 0.94);
+        --app-control-hover: #f2f2f1;
+        --app-border: rgba(17, 17, 17, 0.1);
+        --app-border-strong: rgba(17, 17, 17, 0.2);
+        --app-text: #171717;
+        --app-muted: #686868;
+        --app-text-subtle: #969696;
+        --app-glass: rgba(255, 255, 255, 0.9);
+        --app-glass-strong: rgba(255, 255, 255, 0.97);
+        --app-overlay: rgba(12, 12, 12, 0.44);
+        --app-shadow: 0 20px 48px rgba(17, 17, 17, 0.075), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+        --app-shadow-soft: 0 8px 24px rgba(17, 17, 17, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        --app-shadow-raised: 0 28px 70px rgba(17, 17, 17, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+        --app-dot: rgba(17, 17, 17, 0.25);
+        --app-dot-active: rgba(17, 17, 17, 0.82);
+      }
+
+      html.light[data-surface="mist"] {
+        --app-bg: #eceeed;
+        --app-workspace: #e4e7e5;
+        --app-canvas: #f1f3f2;
+        --app-sidebar: #f0f2f1;
+        --app-panel: #f8f9f8;
+        --app-panel-raised: #ffffff;
+        --app-panel-soft: rgba(248, 249, 248, 0.76);
+        --app-panel-inset: #e6e9e7;
+        --app-control: rgba(250, 251, 250, 0.9);
+        --app-control-hover: #f3f5f4;
+        --app-border: rgba(70, 78, 74, 0.15);
+        --app-border-strong: rgba(70, 78, 74, 0.26);
+        --app-text: #262a28;
+        --app-muted: #68706c;
+        --app-text-subtle: #8b928e;
+        --app-glass: rgba(244, 246, 245, 0.9);
+        --app-glass-strong: rgba(249, 250, 249, 0.96);
+        --app-overlay: rgba(30, 36, 33, 0.43);
+        --app-shadow: 0 22px 50px rgba(40, 50, 45, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        --app-shadow-soft: 0 9px 26px rgba(40, 50, 45, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        --app-shadow-raised: 0 28px 66px rgba(40, 50, 45, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        --app-dot: rgba(87, 101, 94, 0.24);
+        --app-dot-active: rgba(62, 75, 68, 0.72);
+      }
+
+      html.dark[data-surface="black"] {
+        --app-bg: #09090b;
+        --app-panel: #18181b;
+        --app-panel-raised: #27272a;
+        --app-panel-soft: rgba(255, 255, 255, 0.06);
+        --app-border: rgba(255, 255, 255, 0.1);
+        --app-border-strong: rgba(255, 255, 255, 0.2);
+        --app-text: #f4f4f5;
+        --app-muted: #a1a1aa;
+        --app-glass: rgba(24, 24, 27, 0.92);
+        --app-shadow: 0 22px 56px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        --app-dot: rgba(212, 212, 216, 0.22);
+      }
+
+      html.dark[data-surface="graphite"] {
+        --app-bg: #18181b;
+        --app-panel: #27272a;
+        --app-panel-raised: #3f3f46;
+        --app-panel-soft: rgba(255, 255, 255, 0.065);
+        --app-border: rgba(244, 244, 245, 0.13);
+        --app-border-strong: rgba(244, 244, 245, 0.23);
+        --app-text: #f4f4f5;
+        --app-muted: #a1a1aa;
+        --app-glass: rgba(39, 39, 42, 0.91);
+        --app-shadow: 0 22px 54px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.075);
+        --app-dot: rgba(228, 228, 231, 0.23);
+      }
+
+      html.dark[data-surface="ash"] {
+        --app-bg: #252628;
+        --app-panel: #303235;
+        --app-panel-raised: #3b3d41;
+        --app-panel-soft: rgba(255, 255, 255, 0.07);
+        --app-border: rgba(245, 245, 245, 0.14);
+        --app-border-strong: rgba(245, 245, 245, 0.25);
+        --app-text: #f1f2f3;
+        --app-muted: #b0b3b7;
+        --app-glass: rgba(48, 50, 53, 0.9);
+        --app-shadow: 0 22px 52px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        --app-dot: rgba(226, 228, 231, 0.24);
+      }
+
+      :root,
+      html.light[data-accent="signature"] {
+        --app-accent: #fca311;
+        --app-accent-hover: #e8920d;
+        --app-accent-soft: rgba(252, 163, 17, 0.14);
+        --app-on-accent: #2d2a26;
+        --app-accent-gradient: linear-gradient(135deg, #fca311, #ffb347);
+      }
+
+      html.dark[data-accent="signature"] {
+        --app-accent: #d4d4d8;
+        --app-accent-hover: #f4f4f5;
+        --app-accent-soft: rgba(212, 212, 216, 0.12);
+        --app-on-accent: #18181b;
+        --app-accent-gradient: linear-gradient(135deg, #e4e4e7, #a1a1aa);
+      }
+
+      html.light[data-accent="cobalt"] {
+        --app-accent: #2563eb;
+        --app-accent-hover: #1d4ed8;
+        --app-accent-soft: rgba(37, 99, 235, 0.12);
+        --app-on-accent: #ffffff;
+        --app-accent-gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+      }
+
+      html.dark[data-accent="cobalt"] {
+        --app-accent: #93c5fd;
+        --app-accent-hover: #bfdbfe;
+        --app-accent-soft: rgba(147, 197, 253, 0.14);
+        --app-on-accent: #172033;
+        --app-accent-gradient: linear-gradient(135deg, #bfdbfe, #60a5fa);
+      }
+
+      html.light[data-accent="coral"] {
+        --app-accent: #dc6247;
+        --app-accent-hover: #c84f35;
+        --app-accent-soft: rgba(220, 98, 71, 0.13);
+        --app-on-accent: #ffffff;
+        --app-accent-gradient: linear-gradient(135deg, #dc6247, #f59b78);
+      }
+
+      html.dark[data-accent="coral"] {
+        --app-accent: #f4a38f;
+        --app-accent-hover: #fec8b9;
+        --app-accent-soft: rgba(244, 163, 143, 0.14);
+        --app-on-accent: #321b16;
+        --app-accent-gradient: linear-gradient(135deg, #fec8b9, #e77b63);
+      }
+
+      html.light[data-accent="forest"] {
+        --app-accent: #2f7d62;
+        --app-accent-hover: #25684f;
+        --app-accent-soft: rgba(47, 125, 98, 0.13);
+        --app-on-accent: #ffffff;
+        --app-accent-gradient: linear-gradient(135deg, #2f7d62, #6bb69a);
+      }
+
+      html.dark[data-accent="forest"] {
+        --app-accent: #86c8ae;
+        --app-accent-hover: #b3dfcd;
+        --app-accent-soft: rgba(134, 200, 174, 0.14);
+        --app-on-accent: #15251f;
+        --app-accent-gradient: linear-gradient(135deg, #b3dfcd, #5ba788);
+      }
+
+      /* Clean White is a complete monochrome palette. Accent preferences stay
+         saved for the other surfaces, but cannot leak colored controls here. */
+      html.light[data-surface="clean"] {
+        --app-accent: #171717;
+        --app-accent-hover: #000000;
+        --app-accent-soft: rgba(17, 17, 17, 0.08);
+        --app-on-accent: #ffffff;
+        --app-accent-gradient: linear-gradient(135deg, #252525, #000000);
+      }
+
+      /* Soft Mist is a complete graphite-grey palette. */
+      html.light[data-surface="mist"] {
+        --app-accent: #59615d;
+        --app-accent-hover: #414844;
+        --app-accent-soft: rgba(70, 78, 74, 0.11);
+        --app-on-accent: #ffffff;
+        --app-accent-gradient: linear-gradient(135deg, #6f7873, #444b47);
+      }
+
+      html {
+        --app-workspace: var(--app-bg);
+        --app-canvas: var(--app-panel);
+        --app-sidebar: var(--app-panel-soft);
+        --app-panel-inset: color-mix(in srgb, var(--app-panel) 82%, var(--app-bg));
+        --app-control: color-mix(in srgb, var(--app-panel) 92%, transparent);
+        --app-control-hover: color-mix(in srgb, var(--app-panel) 82%, var(--app-accent-soft));
+        --app-text-subtle: color-mix(in srgb, var(--app-muted) 72%, transparent);
+        --app-glass-strong: color-mix(in srgb, var(--app-panel) 96%, transparent);
+        --app-overlay: color-mix(in srgb, var(--app-text) 44%, transparent);
+        --app-shadow-soft: var(--app-shadow);
+        --app-shadow-raised: var(--app-shadow);
+        --app-dot-active: color-mix(in srgb, var(--app-text) 78%, transparent);
+        --app-primary: var(--app-accent);
+        --app-primary-hover: var(--app-accent-hover);
+        --app-primary-soft: var(--app-accent-soft);
+        --app-on-primary: var(--app-on-accent);
+        --app-primary-gradient: var(--app-accent-gradient);
+        --bg-color: var(--app-bg);
+        --panel-color: var(--app-panel);
+        --border-color: var(--app-border);
+        --accent-color: var(--app-accent);
+        --accent-contrast: var(--app-on-accent);
+        --text-color: var(--app-text);
+        --text-muted-color: var(--app-muted);
+        --canvas-bg: var(--app-canvas);
+      }
+
+      /* ── 暗色主题（blackdesign）：html.dark ── */
+      html.dark body {
+        background-color: var(--app-bg);
+        color: var(--app-text);
+      }
+      /* 暗色：确保 zinc 颜色正确（Tailwind CDN 可能被 CSP 拦截时的兜底） */
+      html.dark .bg-zinc-950  { background-color: var(--app-bg); }
+      html.dark .bg-zinc-900  { background-color: var(--app-panel); }
+      html.dark .bg-zinc-800  { background-color: var(--app-panel-raised); }
+      html.dark .border-zinc-800 { border-color: var(--app-border); }
+      html.dark .border-zinc-700 { border-color: var(--app-border-strong); }
+      html.dark .text-zinc-100 { color: var(--app-text); }
+      html.dark .text-zinc-400 { color: var(--app-muted); }
+      html.dark .text-zinc-500 { color: #71717a; }
+      html.dark .text-zinc-600 { color: #52525b; }
+      html.dark .text-cyan-400 { color: var(--app-accent); }
+      html.dark .border-cyan-400 { border-color: var(--app-accent); }
+      html.dark .bg-cyan-400  { background-color: var(--app-accent); color: var(--app-on-accent); }
+      html.dark .hover\:bg-zinc-800:hover { background-color: var(--app-panel-raised); }
+      html.dark .hover\:text-cyan-300:hover { color: var(--app-accent-hover); }
+      html.dark .bg-background { background-color: var(--app-bg); }
+      html.dark .text-on-background { color: var(--app-text); }
+      html.dark .bg-surface-container-lowest { background-color: var(--app-bg); }
+      html.dark .bg-surface-container-low    { background-color: var(--app-panel-soft); }
+      html.dark .bg-surface-container        { background-color: var(--app-panel); }
+      html.dark .bg-surface-container-high   { background-color: var(--app-panel-raised); }
+      html.dark .bg-surface-container-highest{ background-color: var(--app-panel-raised); }
+      html.dark .bg-primary        { background-color: var(--app-accent); }
+      html.dark .text-primary      { color: var(--app-accent); }
+      html.dark .border-primary    { border-color: var(--app-accent); }
+      html.dark .text-on-primary   { color: var(--app-on-accent); }
+      html.dark .bg-primary-container { background-color: var(--app-accent-soft); }
+      html.dark .text-on-primary-container { color: var(--app-accent); }
+      html.dark .text-secondary    { color: var(--app-accent); }
+      html.dark .text-on-surface   { color: var(--app-text); }
+      html.dark .text-on-surface-variant { color: var(--app-muted); }
+      html.dark .border-outline-variant  { border-color: var(--app-border); }
+      html.dark .border-outline          { border-color: var(--app-border-strong); }
+      html.dark .bg-\[\#0A0E1B\]  { background-color: var(--app-bg); }
+      html.dark .bg-zinc-50        { background-color: #fafafa; }
+      html.dark .text-error        { color: #ffb4ab; }
+
+      /* ── 亮色主题（writedesign）：html.light ── */
+      html.light body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+      /* 亮色：覆盖所有暗色类 */
+      html.light .bg-zinc-950,
+      html.light .bg-zinc-900  { background-color: var(--panel-color) !important; }
+      html.light .bg-zinc-800  { background-color: var(--border-color) !important; }
+      html.light .bg-zinc-800\/60 { background-color: color-mix(in srgb, var(--app-border) 58%, transparent) !important; }
+      html.light .hover\:bg-zinc-800\/60:hover { background-color: color-mix(in srgb, var(--app-border) 72%, transparent) !important; }
+      html.light .bg-zinc-50   { background-color: var(--app-panel-raised) !important; }
+      html.light .border-zinc-800,
+      html.light .border-zinc-700 { border-color: var(--border-color) !important; }
+      html.light .text-zinc-100 { color: var(--text-color) !important; }
+      html.light .text-zinc-200 { color: var(--app-text) !important; opacity: 1; }
+      html.light .text-zinc-300 { color: color-mix(in srgb, var(--app-text) 86%, var(--app-muted)) !important; opacity: 1; }
+      html.light .text-zinc-400,
+      html.light .text-zinc-500 { color: var(--app-muted) !important; opacity: 1; }
+      html.light .text-zinc-600 { color: color-mix(in srgb, var(--app-text) 70%, var(--app-muted)) !important; opacity: 1; }
+      html.light .text-zinc-700 { color: color-mix(in srgb, var(--app-text) 84%, var(--app-muted)) !important; opacity: 1; }
+      html.light .hover\:bg-zinc-800:hover { background-color: var(--bg-color) !important; }
+      html.light .hover\:text-cyan-300:hover { color: var(--accent-color) !important; }
+      html.light .text-cyan-400 { color: var(--accent-color) !important; }
+      html.light .border-cyan-400 { border-color: var(--accent-color) !important; }
+      html.light .bg-cyan-400 { background-color: var(--accent-color) !important; color: var(--app-on-accent) !important; }
+      html.light .bg-background { background-color: var(--bg-color) !important; }
+      html.light .bg-\[\#0A0E1B\] { background-color: var(--app-panel) !important; }
+      html.light .pixel-grid {
+        background-image:
+          linear-gradient(to right, var(--app-dot) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--app-dot) 1px, transparent 1px) !important;
+      }
+      html.light .bg-surface-container-lowest,
+      html.light .bg-surface-container-low { background-color: var(--bg-color) !important; }
+      html.light .bg-surface-container        { background-color: var(--panel-color) !important; }
+      html.light .bg-surface-container-high   { background-color: var(--bg-color) !important; }
+      html.light .bg-surface-container-highest{ background-color: var(--border-color) !important; }
+      html.light .border-outline-variant,
+      html.light .border-outline { border-color: var(--border-color) !important; }
+      html.light .text-on-surface,
+      html.light .text-on-background { color: var(--text-color) !important; }
+      html.light .text-on-surface-variant { color: var(--app-muted) !important; opacity: 1; }
+      html.light .text-primary { color: var(--accent-color) !important; }
+      html.light .bg-primary   { background-color: var(--accent-color) !important; }
+      html.light .border-primary { border-color: var(--accent-color) !important; }
+      html.light .bg-primary-container { background-color: var(--app-accent-soft) !important; }
+      html.light .text-on-primary { color: var(--app-on-accent) !important; }
+      html.light .text-on-primary-container { color: var(--app-accent) !important; }
+      html.light .text-secondary { color: var(--accent-color) !important; }
+      html.light .shadow-\[2px_2px_0px_0px_\#4dd0e1\]            { box-shadow: 2px 2px 0px 0px rgba(45,42,38,0.3) !important; }
+      html.light .shadow-\[8px_8px_0px_0px_rgba\(0\,0\,0\,0\.5\)\] { box-shadow: 4px 4px 0px 0px rgba(45,42,38,0.3) !important; }
+      html.light .shadow-\[2px_2px_0px_0px_\#869395\]             { box-shadow: 2px 2px 0px 0px rgba(45,42,38,0.3) !important; }
+      html.light .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\]   { box-shadow: 2px 2px 0px 0px rgba(45,42,38,0.5) !important; }
+      html.light .pixel-grid {
+        background-image:
+          linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--border-color) 1px, transparent 1px) !important;
+      }
+
+      /* ── 共用样式 ── */
+      /* Canvas 背景：暗色 #0A0E1B，亮色 #EDE7D9 */
+      .canvas-bg { background-color: var(--canvas-bg); }
+      /* 中文使用 Noto Sans SC，英文使用 Space Grotesk，形成像素风协调感 */
+      body, * {
+        font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+      }
+      /* 中文内容区域强制使用 Noto Sans SC */
+      :lang(zh), .zh-text {
+        font-family: 'Noto Sans SC', 'Space Grotesk', sans-serif;
+      }
+      .pixel-grid {
+        background-size: 32px 32px;
+        background-image:
+          linear-gradient(to right, var(--app-dot) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--app-dot) 1px, transparent 1px);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        /* 确保图标不被当作文字选中 */
+        user-select: none;
+        font-feature-settings: 'liga';
+        -webkit-font-feature-settings: 'liga';
+      }
+      /* 亮色主题专用工具类 */
+      html.light .light-panel { background-color: var(--panel-color); border-color: var(--border-color); }
+      html.light .light-bg    { background-color: var(--bg-color); }
+      html.light .light-border { border-color: var(--border-color); }
+      html.light .light-text  { color: var(--text-color); }
+      html.light .light-accent { color: var(--accent-color); }
+
+      /* 自定义滚动条 */
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--app-border-strong); }
+      html.light .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--app-border-strong); }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

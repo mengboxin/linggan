@@ -1,0 +1,1296 @@
+.canvas-flow-tutorial-root {
+  position: absolute;
+  inset: 0;
+  z-index: 42;
+  color: #f7eee4;
+  pointer-events: none;
+}
+
+.canvas-flow-tutorial-launcher {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 237, 214, 0.16);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(43, 34, 28, 0.88), rgba(26, 22, 19, 0.82));
+  padding: 0 12px;
+  box-shadow: 0 15px 36px rgba(35, 23, 13, 0.28), inset 0 1px rgba(255, 247, 235, 0.08);
+  color: #f2dfc8;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(18px) saturate(118%);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.canvas-flow-tutorial-launcher:hover,
+.canvas-flow-tutorial-launcher:focus-visible {
+  border-color: rgba(235, 174, 92, 0.44);
+  box-shadow: 0 18px 42px rgba(35, 23, 13, 0.34), 0 0 0 4px rgba(225, 153, 65, 0.09);
+  outline: 0;
+  transform: translateY(-2px);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-launcher {
+  border-color: rgba(133, 95, 51, 0.16);
+  background: linear-gradient(145deg, rgba(255, 253, 248, 0.88), rgba(255, 246, 233, 0.8));
+  box-shadow: 0 15px 36px rgba(91, 61, 27, 0.15), inset 0 1px rgba(255, 255, 255, 0.88);
+  color: #7c5430;
+}
+
+.canvas-flow-tutorial-demo-canvas.is-director {
+  overflow: hidden;
+}
+
+.canvas-flow-tutorial-demo-director-dock {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(236, 177, 95, 0.32);
+  border-radius: 999px;
+  background: rgba(36, 30, 25, 0.9);
+  padding: 0 9px;
+  color: #efb96f;
+  font-size: 8px;
+  font-weight: 850;
+  transform: translateX(-50%);
+}
+
+.canvas-flow-tutorial-demo-director-panel {
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
+  width: 170px;
+  border: 1px solid rgba(255, 237, 214, 0.16);
+  border-radius: 8px;
+  background: rgba(37, 31, 27, 0.96);
+  padding: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.canvas-flow-tutorial-demo-director-panel > span { display: flex; align-items: center; gap: 4px; color: #fff1df; font-size: 8px; font-weight: 850; }
+.canvas-flow-tutorial-demo-director-panel b { margin-left: auto; border: 1px solid rgba(255,255,255,0.16); border-radius: 4px; padding: 2px 4px; color: #efb96f; font-size: 7px; }
+.canvas-flow-tutorial-demo-director-panel p { margin: 7px 0; color: #bba995; font-size: 7px; line-height: 1.45; }
+.canvas-flow-tutorial-demo-director-panel i { display: block; border-radius: 4px; background: #efb96f; padding: 4px; color: #332010; font-size: 7px; font-style: normal; font-weight: 850; text-align: center; }
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-director-dock { background: #fffaf3; color: #9d642d; }
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-director-panel { border-color: rgba(119, 85, 48, 0.16); background: #fffdf9; }
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-director-panel > span { color: #513b25; }
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-director-panel p { color: #816c55; }
+
+.canvas-flow-tutorial-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 4;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 9, 7, 0.2);
+  padding: 22px;
+  pointer-events: auto;
+  backdrop-filter: blur(1px);
+}
+
+.canvas-flow-tutorial-card {
+  width: min(568px, calc(100vw - 44px));
+  max-height: calc(100% - 44px);
+  overflow: auto;
+  border: 1px solid rgba(255, 236, 211, 0.16);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(232, 171, 86, 0.14), transparent 40%),
+    linear-gradient(150deg, rgba(43, 35, 30, 0.97), rgba(24, 21, 19, 0.96));
+  box-shadow: 0 32px 90px rgba(8, 6, 5, 0.46), inset 0 1px rgba(255, 247, 235, 0.08);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(228, 172, 94, 0.28) transparent;
+  backdrop-filter: blur(28px) saturate(122%);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-overlay {
+  background: rgba(65, 46, 28, 0.2);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-card {
+  border-color: rgba(137, 99, 55, 0.2);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(235, 178, 94, 0.2), transparent 42%),
+    linear-gradient(150deg, rgba(255, 253, 248, 0.98), rgba(250, 241, 229, 0.97));
+  box-shadow: 0 32px 90px rgba(73, 49, 22, 0.25), inset 0 1px rgba(255, 255, 255, 0.9);
+  color: #493724;
+}
+
+.canvas-flow-tutorial-header {
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 237, 216, 0.09);
+  padding: 10px 12px 10px 14px;
+}
+
+.canvas-flow-tutorial-mark,
+.canvas-flow-tutorial-step-heading > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(236, 177, 95, 0.28);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(233, 172, 86, 0.18), rgba(222, 127, 68, 0.08));
+  color: #efb96f;
+  box-shadow: inset 0 1px rgba(255, 247, 233, 0.08);
+}
+
+.canvas-flow-tutorial-header > span:nth-child(2) {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.canvas-flow-tutorial-header small {
+  color: rgba(230, 211, 190, 0.58);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.canvas-flow-tutorial-header strong {
+  overflow: hidden;
+  color: #fff7ed;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.canvas-flow-tutorial-header > button {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(236, 222, 205, 0.6);
+  cursor: pointer;
+}
+
+.canvas-flow-tutorial-header > button:hover,
+.canvas-flow-tutorial-header > button:focus-visible {
+  border-color: rgba(255, 238, 216, 0.12);
+  background: rgba(255, 238, 216, 0.08);
+  color: #fff8ee;
+  outline: 0;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header {
+  border-color: rgba(121, 88, 51, 0.1);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header small {
+  color: #a18970;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header strong {
+  color: #463421;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header > button {
+  color: #8c745b;
+}
+
+.canvas-flow-tutorial-stage {
+  padding: 14px 14px 0;
+}
+
+.canvas-flow-tutorial-demo-window {
+  position: relative;
+  aspect-ratio: 16 / 7.4;
+  overflow: hidden;
+  border: 1px solid rgba(255, 239, 220, 0.12);
+  border-radius: 16px;
+  background: #191715;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 18px 38px rgba(7, 5, 4, 0.22);
+}
+
+.canvas-flow-tutorial-demo-chrome {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  height: 24px;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 9px;
+  background: rgba(30, 27, 24, 0.88);
+}
+
+.canvas-flow-tutorial-demo-chrome span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(238, 204, 162, 0.28);
+}
+
+.canvas-flow-tutorial-demo-canvas {
+  position: absolute;
+  inset: 24px 0 0;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(245, 228, 205, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 228, 205, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 70% 20%, rgba(221, 162, 85, 0.12), transparent 44%),
+    #211d19;
+  background-size: 20px 20px, 20px 20px, auto, auto;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-window {
+  border-color: rgba(127, 93, 53, 0.14);
+  background: #f8f1e7;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.8), 0 18px 38px rgba(86, 58, 27, 0.12);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-chrome {
+  border-color: rgba(113, 81, 45, 0.08);
+  background: rgba(255, 251, 245, 0.9);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-canvas {
+  background:
+    linear-gradient(rgba(96, 72, 45, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 72, 45, 0.075) 1px, transparent 1px),
+    radial-gradient(circle at 70% 20%, rgba(221, 162, 85, 0.15), transparent 44%),
+    #fbf7f0;
+  background-size: 20px 20px, 20px 20px, auto, auto;
+}
+
+.canvas-flow-tutorial-demo-new {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  display: flex;
+  height: 24px;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid rgba(232, 172, 87, 0.28);
+  border-radius: 8px;
+  background: rgba(229, 158, 69, 0.13);
+  padding: 0 8px;
+  color: #f2bd73;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.canvas-flow-tutorial-demo-name {
+  display: flex;
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: 210px;
+  min-height: 58px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 239, 217, 0.14);
+  border-radius: 13px;
+  background: rgba(39, 34, 30, 0.92);
+  padding: 8px 9px;
+  color: #e9b975;
+  box-shadow: 0 15px 30px rgba(5, 4, 3, 0.28);
+  transform: translate(-50%, -50%);
+}
+
+.canvas-flow-tutorial-demo-name > span {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.canvas-flow-tutorial-demo-name strong,
+.canvas-flow-tutorial-demo-name small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.canvas-flow-tutorial-demo-name strong {
+  color: #f7ecdf;
+  font-size: 9px;
+}
+
+.canvas-flow-tutorial-demo-name small {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  padding: 3px 5px;
+  color: #b9aa99;
+  font-size: 7px;
+}
+
+.canvas-flow-tutorial-demo-name i {
+  border-radius: 6px;
+  background: #d9974d;
+  padding: 4px 6px;
+  color: #291b0e;
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-name {
+  border-color: rgba(123, 89, 49, 0.16);
+  background: rgba(255, 253, 249, 0.96);
+  box-shadow: 0 15px 30px rgba(85, 57, 25, 0.14);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-name strong {
+  color: #4f3b26;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-name small {
+  border-color: rgba(99, 70, 39, 0.12);
+  color: #8f775f;
+}
+
+.canvas-flow-tutorial-demo-cursor {
+  position: absolute;
+  z-index: 8;
+  color: #f7c47e;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+}
+
+.is-create > .canvas-flow-tutorial-demo-cursor {
+  top: 33px;
+  right: 33px;
+}
+
+.canvas-flow-tutorial-demo-node {
+  display: flex;
+  position: absolute;
+  width: 110px;
+  height: 52px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(49, 48, 53, 0.96), rgba(29, 28, 32, 0.96));
+  padding: 0 9px;
+  color: #f1e6d8;
+  box-shadow: 0 12px 24px rgba(4, 3, 3, 0.22);
+  font-size: 8px;
+  font-weight: 850;
+}
+
+.canvas-flow-tutorial-demo-node.is-prompt {
+  color: #edbd69;
+}
+
+.canvas-flow-tutorial-demo-node.is-image {
+  color: #5bc5b6;
+}
+
+.canvas-flow-tutorial-demo-node.is-generator {
+  color: #8fabf4;
+}
+
+.canvas-flow-tutorial-demo-node span {
+  color: #e9e2da;
+}
+
+.canvas-flow-tutorial-demo-node b {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #27231f;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.canvas-flow-tutorial-demo-node.is-prompt b {
+  right: -5px;
+}
+
+.canvas-flow-tutorial-demo-node.is-generator b {
+  left: -5px;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-node {
+  border-color: rgba(103, 73, 40, 0.14);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(251, 244, 235, 0.98));
+  box-shadow: 0 12px 24px rgba(83, 55, 25, 0.12);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-node span {
+  color: #4d3d2e;
+}
+
+.is-nodes .canvas-flow-tutorial-demo-node.is-prompt {
+  top: 31px;
+  left: 54px;
+}
+
+.is-nodes .canvas-flow-tutorial-demo-node.is-image {
+  top: 101px;
+  left: 125px;
+}
+
+.canvas-flow-tutorial-demo-tools {
+  display: flex;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 112px;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid rgba(255, 239, 218, 0.14);
+  border-radius: 13px;
+  background: rgba(37, 32, 28, 0.88);
+  padding: 7px;
+  box-shadow: 0 14px 28px rgba(5, 4, 3, 0.22);
+}
+
+.canvas-flow-tutorial-demo-tools strong {
+  padding: 1px 2px 4px;
+  color: #d7c5b0;
+  font-size: 7px;
+}
+
+.canvas-flow-tutorial-demo-tools span {
+  display: flex;
+  height: 24px;
+  align-items: center;
+  gap: 5px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0 6px;
+  color: #b7a999;
+  font-size: 7px;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-tools {
+  border-color: rgba(103, 73, 40, 0.14);
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: 0 14px 28px rgba(83, 55, 25, 0.11);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-tools strong,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-tools span {
+  color: #705b46;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-tools span {
+  background: rgba(107, 76, 41, 0.05);
+}
+
+.is-nodes > .canvas-flow-tutorial-demo-cursor {
+  top: 82px;
+  right: 57px;
+}
+
+.is-organize .canvas-flow-tutorial-demo-node.is-prompt { top: 30px; left: 26px; }
+.is-organize .canvas-flow-tutorial-demo-node.is-image { bottom: 24px; left: 62px; }
+.is-organize .canvas-flow-tutorial-demo-node.is-generator { top: 54px; right: 38px; }
+
+.canvas-flow-tutorial-demo-selection {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  width: 60%;
+  height: 74%;
+  border: 1.5px dashed rgba(116, 193, 210, 0.95);
+  border-radius: 10px;
+  background: rgba(91, 189, 202, 0.08);
+  box-shadow: 0 0 0 5px rgba(94, 190, 206, 0.08);
+}
+
+.canvas-flow-tutorial-demo-selection i {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  border: 1px solid rgba(116, 193, 210, 0.34);
+  border-radius: 999px;
+  background: #183137;
+  padding: 2px 6px;
+  color: #a6edf2;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-selection {
+  border-color: rgba(49, 134, 147, 0.78);
+  background: rgba(81, 176, 183, 0.09);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-selection i {
+  border-color: rgba(49, 134, 147, 0.22);
+  background: #f7fffe;
+  color: #28737d;
+}
+
+.is-organize > .canvas-flow-tutorial-demo-cursor {
+  right: 33%;
+  bottom: 18px;
+}
+
+.is-connect .canvas-flow-tutorial-demo-node.is-prompt {
+  top: 58px;
+  left: 42px;
+}
+
+.is-connect .canvas-flow-tutorial-demo-node.is-generator {
+  top: 58px;
+  right: 42px;
+}
+
+.canvas-flow-tutorial-demo-edge {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  width: 190px;
+  height: 76px;
+  overflow: visible;
+  transform: translateX(-50%);
+}
+
+.canvas-flow-tutorial-demo-edge path {
+  fill: none;
+  stroke: rgba(232, 177, 92, 0.56);
+  stroke-width: 2;
+}
+
+.canvas-flow-tutorial-demo-edge-handle {
+  fill: #26211d;
+  stroke: rgba(249, 222, 184, 0.92);
+  stroke-width: 2;
+}
+
+.canvas-flow-tutorial-demo-edge-handle.is-target {
+  filter: drop-shadow(0 0 6px rgba(234, 173, 88, 0.72));
+}
+
+.canvas-flow-tutorial-demo-edge-actions {
+  position: absolute;
+  right: 50%;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 239, 218, 0.14);
+  border-radius: 9px;
+  background: rgba(35, 31, 28, 0.9);
+  padding: 5px 7px;
+  box-shadow: 0 10px 22px rgba(5, 4, 3, 0.2);
+  color: #d8cabc;
+  font-size: 7px;
+  font-weight: 800;
+  transform: translateX(50%);
+}
+
+.canvas-flow-tutorial-demo-edge-actions span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.canvas-flow-tutorial-demo-edge-actions kbd {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 7px;
+  color: #efbd78;
+  font-family: inherit;
+  font-size: 7px;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-edge-handle {
+  fill: #fffdf8;
+  stroke: #a17750;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-edge-actions {
+  border-color: rgba(103, 73, 40, 0.14);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: 0 10px 22px rgba(83, 55, 25, 0.12);
+  color: #5f4d3b;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-edge-actions kbd {
+  border-left-color: rgba(103, 73, 40, 0.12);
+  color: #9a632d;
+}
+
+.canvas-flow-tutorial-demo-packet {
+  position: absolute;
+  top: 80px;
+  left: calc(50% - 83px);
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgba(255, 247, 233, 0.82);
+  border-radius: 50%;
+  background: #e7a956;
+  box-shadow: 0 0 12px rgba(234, 173, 88, 0.78);
+}
+
+.canvas-flow-tutorial-demo-result {
+  display: flex;
+  position: absolute;
+  top: 23px;
+  left: 50%;
+  width: 142px;
+  height: 65px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid rgba(124, 183, 130, 0.25);
+  border-radius: 12px;
+  background: rgba(94, 174, 112, 0.09);
+  color: #75bd82;
+  transform: translateX(-50%);
+}
+
+.canvas-flow-tutorial-demo-result span {
+  color: #b7b1aa;
+  font-size: 7px;
+  font-weight: 750;
+}
+
+.canvas-flow-tutorial-demo-run-control {
+  display: flex;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  height: 26px;
+  align-items: center;
+  border: 1px solid rgba(255, 239, 218, 0.14);
+  border-radius: 8px;
+  background: rgba(42, 35, 30, 0.91);
+  box-shadow: 0 16px 30px rgba(5, 4, 3, 0.26);
+  color: #eee3d6;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.canvas-flow-tutorial-demo-run,
+.canvas-flow-tutorial-demo-run-trigger {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-flow-tutorial-demo-run {
+  gap: 5px;
+  padding: 0 8px;
+}
+
+.canvas-flow-tutorial-demo-run-trigger {
+  width: 22px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  color: #b7aa9d;
+}
+
+.canvas-flow-tutorial-demo-run-menu {
+  display: flex;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  width: 116px;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid rgba(255, 239, 218, 0.13);
+  border-radius: 9px;
+  background: rgba(35, 31, 28, 0.95);
+  padding: 4px;
+  box-shadow: 0 15px 28px rgba(5, 4, 3, 0.28);
+}
+
+.canvas-flow-tutorial-demo-run-menu span {
+  display: flex;
+  height: 21px;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px;
+  padding: 0 5px;
+  color: #cfc4b8;
+  font-size: 7px;
+  font-weight: 750;
+}
+
+.canvas-flow-tutorial-demo-run-menu span:first-child {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f0dfcb;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-run-control {
+  border-color: rgba(103, 73, 40, 0.14);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: 0 16px 30px rgba(83, 55, 25, 0.12);
+  color: #4d3d2e;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-run-trigger {
+  border-left-color: rgba(103, 73, 40, 0.12);
+  color: #846f5a;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-run-menu {
+  border-color: rgba(103, 73, 40, 0.14);
+  background: rgba(255, 253, 249, 0.97);
+  box-shadow: 0 15px 28px rgba(83, 55, 25, 0.14);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-run-menu span {
+  color: #78634e;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-run-menu span:first-child {
+  background: rgba(107, 76, 41, 0.06);
+  color: #4d3d2e;
+}
+
+.is-generate .canvas-flow-tutorial-demo-result {
+  top: 52px;
+  left: 32%;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-result span {
+  color: #8c755f;
+}
+
+.is-generate > .canvas-flow-tutorial-demo-cursor {
+  top: 31px;
+  right: 30px;
+}
+
+.canvas-flow-tutorial-demo-world span {
+  position: absolute;
+  width: 62px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.canvas-flow-tutorial-demo-world .is-a { top: 31px; left: 45px; }
+.canvas-flow-tutorial-demo-world .is-b { top: 76px; left: 142px; }
+.canvas-flow-tutorial-demo-world .is-c { top: 23px; right: 62px; }
+.canvas-flow-tutorial-demo-world .is-d { bottom: 19px; right: 105px; }
+
+.canvas-flow-tutorial-demo-map {
+  position: absolute;
+  bottom: 12px;
+  left: 13px;
+  width: 112px;
+  height: 68px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 239, 218, 0.16);
+  border-radius: 10px;
+  background: rgba(33, 28, 24, 0.86);
+  box-shadow: 0 12px 25px rgba(4, 3, 3, 0.24);
+}
+
+.canvas-flow-tutorial-demo-map > span {
+  position: absolute;
+  width: 15px;
+  height: 10px;
+  border-radius: 3px;
+  background: #d3a454;
+}
+
+.canvas-flow-tutorial-demo-map > .is-a { top: 12px; left: 14px; }
+.canvas-flow-tutorial-demo-map > .is-b { top: 37px; left: 45px; background: #68b7a8; }
+.canvas-flow-tutorial-demo-map > .is-c { top: 16px; right: 16px; background: #7897df; }
+.canvas-flow-tutorial-demo-map > .is-d { bottom: 8px; right: 33px; background: #72b37b; }
+
+.canvas-flow-tutorial-demo-map > svg {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  color: rgba(239, 193, 126, 0.75);
+}
+
+.canvas-flow-tutorial-demo-map-view {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 48px;
+  height: 31px;
+  border: 1.5px solid rgba(244, 194, 121, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 0 999px rgba(8, 6, 5, 0.28);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-demo-map {
+  border-color: rgba(104, 74, 40, 0.15);
+  background: rgba(255, 251, 245, 0.9);
+  box-shadow: 0 12px 25px rgba(84, 56, 25, 0.12);
+}
+
+.is-minimap > .canvas-flow-tutorial-demo-cursor {
+  bottom: 35px;
+  left: 61px;
+}
+
+.canvas-flow-tutorial-copy {
+  padding: 14px 16px 11px;
+}
+
+.canvas-flow-tutorial-step-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.canvas-flow-tutorial-step-heading > span {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+}
+
+.canvas-flow-tutorial-step-heading small {
+  color: #dfad68;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.canvas-flow-tutorial-copy h2 {
+  margin: 8px 0 0;
+  color: #fff7ed;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.canvas-flow-tutorial-copy > p {
+  margin: 7px 0 0;
+  color: rgba(232, 219, 204, 0.73);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.72;
+}
+
+.canvas-flow-tutorial-copy > aside {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 10px;
+  border: 1px solid rgba(234, 177, 97, 0.16);
+  border-radius: 11px;
+  background: rgba(224, 157, 75, 0.08);
+  padding: 8px 9px;
+  color: #e6b776;
+}
+
+.canvas-flow-tutorial-copy > aside svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.canvas-flow-tutorial-copy > aside span {
+  color: rgba(233, 215, 193, 0.78);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy h2 {
+  color: #483521;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > p {
+  color: #806b56;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > aside {
+  border-color: rgba(173, 112, 45, 0.16);
+  background: rgba(230, 161, 78, 0.1);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > aside span {
+  color: #795d40;
+}
+
+.canvas-flow-tutorial-progress {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  padding: 0 16px 12px;
+}
+
+.canvas-flow-tutorial-progress button {
+  height: 14px;
+  border: 0;
+  background: transparent;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.canvas-flow-tutorial-progress button span {
+  display: block;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 239, 219, 0.12);
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.canvas-flow-tutorial-progress button.is-active span {
+  background: linear-gradient(90deg, #e39a49, #efc078);
+  transform: scaleY(1.4);
+}
+
+.canvas-flow-tutorial-progress button:focus-visible {
+  border-radius: 5px;
+  outline: 2px solid rgba(239, 181, 101, 0.72);
+  outline-offset: 1px;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-progress button span {
+  background: rgba(112, 79, 43, 0.13);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-progress button.is-active span {
+  background: linear-gradient(90deg, #c87932, #eaaa5d);
+}
+
+.canvas-flow-tutorial-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 9px;
+  border-top: 1px solid rgba(255, 237, 216, 0.09);
+  padding: 11px 14px 13px;
+}
+
+.canvas-flow-tutorial-footer button {
+  display: flex;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 11px;
+  padding: 0 13px;
+  font-size: 9px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.canvas-flow-tutorial-footer button:hover:not(:disabled),
+.canvas-flow-tutorial-footer button:focus-visible:not(:disabled) {
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.canvas-flow-tutorial-footer button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(226, 158, 74, 0.2);
+}
+
+.canvas-flow-tutorial-footer button:disabled {
+  cursor: default;
+  opacity: 0.34;
+}
+
+.canvas-flow-tutorial-footer .is-secondary {
+  border: 1px solid rgba(255, 237, 215, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(236, 222, 205, 0.72);
+}
+
+.canvas-flow-tutorial-footer .is-primary {
+  min-width: 116px;
+  border: 1px solid rgba(250, 204, 139, 0.3);
+  background: linear-gradient(145deg, #e2a258, #c97a38);
+  box-shadow: 0 9px 22px rgba(183, 100, 40, 0.24), inset 0 1px rgba(255, 240, 215, 0.42);
+  color: #2e1d0d;
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-footer {
+  border-color: rgba(120, 86, 48, 0.1);
+}
+
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-footer .is-secondary {
+  border-color: rgba(115, 82, 45, 0.13);
+  background: rgba(255, 255, 255, 0.56);
+  color: #80684f;
+}
+
+/* Dark canvas guidance uses the same neutral palette as the canvas itself. */
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-launcher {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(145deg, rgba(39, 39, 42, 0.9), rgba(20, 20, 23, 0.88));
+  box-shadow: 0 15px 36px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.08);
+  color: #e4e4e7;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-launcher:hover,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-launcher:focus-visible {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(244, 244, 245, 0.08);
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(244, 244, 245, 0.09), transparent 40%),
+    linear-gradient(150deg, rgba(37, 37, 41, 0.985), rgba(18, 18, 21, 0.98));
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.56), inset 0 1px rgba(255, 255, 255, 0.075);
+  scrollbar-color: rgba(228, 228, 231, 0.28) transparent;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-mark,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-step-heading > span {
+  border-color: rgba(255, 255, 255, 0.17);
+  background: linear-gradient(145deg, rgba(244, 244, 245, 0.14), rgba(161, 161, 170, 0.07));
+  color: #e4e4e7;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-header small,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-step-heading small {
+  color: #a1a1aa;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-header strong,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy h2 {
+  color: #fafafa;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > p,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > aside span {
+  color: rgba(228, 228, 231, 0.72);
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > aside {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(244, 244, 245, 0.065);
+  color: #d4d4d8;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-window,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-chrome,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-canvas {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: #18181b;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-canvas {
+  background:
+    linear-gradient(rgba(244, 244, 245, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 244, 245, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 70% 20%, rgba(161, 161, 170, 0.1), transparent 44%),
+    #18181b;
+  background-size: 20px 20px, 20px 20px, auto, auto;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-new,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-name i,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-demo-run-control,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-footer .is-primary {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: linear-gradient(145deg, #e4e4e7, #a1a1aa);
+  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.66);
+  color: #18181b;
+}
+
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-progress button.is-active span {
+  background: linear-gradient(90deg, #e4e4e7, #a1a1aa);
+}
+
+@media (max-width: 767px) {
+  .canvas-flow-tutorial-root {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .canvas-flow-tutorial-launcher {
+    top: 18px;
+    right: 18px;
+    bottom: auto;
+  }
+}
+
+@media (max-height: 720px) {
+  .canvas-flow-tutorial-overlay {
+    padding-bottom: 16px;
+  }
+
+  .canvas-flow-tutorial-demo-window {
+    aspect-ratio: 16 / 6.4;
+  }
+
+  .canvas-flow-tutorial-copy {
+    padding-top: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas-flow-tutorial-root *,
+  .canvas-flow-tutorial-root *::before,
+  .canvas-flow-tutorial-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Theme bridge: tutorial chrome follows the selected appearance preset while
+   the miniature workflow keeps its functional node colors. */
+.canvas-flow-tutorial-root {
+  --tutorial-panel: var(--app-glass-strong);
+  --tutorial-inset: var(--app-panel-inset);
+  --tutorial-control: var(--app-control);
+  --tutorial-border: var(--app-border);
+  --tutorial-border-strong: var(--app-border-strong);
+  --tutorial-text: var(--app-text);
+  --tutorial-muted: var(--app-muted);
+  --tutorial-subtle: var(--app-text-subtle);
+  --tutorial-primary: var(--app-primary);
+  --tutorial-primary-soft: var(--app-primary-soft);
+  --tutorial-on-primary: var(--app-on-primary);
+  color: var(--tutorial-text);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-launcher,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-launcher,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-launcher {
+  border-color: var(--tutorial-border);
+  background: var(--tutorial-panel);
+  box-shadow: var(--app-shadow);
+  color: var(--tutorial-text);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-launcher:hover,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-launcher:focus-visible {
+  border-color: color-mix(in srgb, var(--tutorial-primary) 42%, var(--tutorial-border));
+  box-shadow: var(--app-shadow-raised);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-overlay,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-overlay {
+  background: var(--app-overlay);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-card,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-card,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-card {
+  border-color: var(--tutorial-border-strong);
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--tutorial-primary) 10%, transparent), transparent 42%),
+    var(--tutorial-panel);
+  box-shadow: var(--app-shadow-raised);
+  color: var(--tutorial-text);
+  scrollbar-color: var(--tutorial-border-strong) transparent;
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header {
+  border-color: var(--tutorial-border);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-mark,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-step-heading > span,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-mark,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-step-heading > span {
+  border-color: color-mix(in srgb, var(--tutorial-primary) 32%, var(--tutorial-border));
+  background: var(--tutorial-primary-soft);
+  color: var(--tutorial-primary);
+  box-shadow: none;
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header small,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-step-heading small,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header small,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-header small,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-step-heading small {
+  color: var(--tutorial-subtle);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header strong,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-copy h2,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header strong,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy h2,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-header strong,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy h2 {
+  color: var(--tutorial-text);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header > button,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-header > button,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-copy > p,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > p,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > p,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > aside span {
+  color: var(--tutorial-muted);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header > button:hover,
+.canvas-flow-tutorial-root .canvas-flow-tutorial-header > button:focus-visible {
+  border-color: var(--tutorial-border);
+  background: var(--tutorial-control);
+  color: var(--tutorial-text);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-copy > aside,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > aside,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-copy > aside {
+  border-color: var(--tutorial-border);
+  background: var(--tutorial-inset);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-copy > aside span,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-copy > aside span {
+  color: var(--tutorial-muted);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-progress button span,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-progress button span {
+  background: var(--tutorial-border-strong);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-progress button.is-active span,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-progress button.is-active span,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-progress button.is-active span {
+  background: var(--tutorial-primary);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-footer,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-footer {
+  border-color: var(--tutorial-border);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-footer .is-secondary,
+.canvas-flow-tutorial-root.is-light .canvas-flow-tutorial-footer .is-secondary {
+  border-color: var(--tutorial-border);
+  background: var(--tutorial-control);
+  color: var(--tutorial-muted);
+}
+
+.canvas-flow-tutorial-root .canvas-flow-tutorial-footer .is-primary,
+.canvas-flow-tutorial-root.is-dark .canvas-flow-tutorial-footer .is-primary {
+  border-color: color-mix(in srgb, var(--tutorial-primary) 42%, var(--tutorial-border));
+  background: var(--app-primary-gradient);
+  color: var(--tutorial-on-primary);
+  box-shadow: var(--app-shadow-soft);
+}

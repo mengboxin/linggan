@@ -1,0 +1,20 @@
+{
+  "id": "venture",
+  "name": "创业路演",
+  "description": "用于早期融资、商业模式、市场验证和关键下一步的结构化创业叙事体系。",
+  "localized_name": "创业路演",
+  "localized_description": "面向融资、创业提案和新业务的路演体系，清晰呈现问题、机会、证据、模式与下一步。",
+  "localized_tags": ["路演", "创业", "融资", "商业模式"],
+  "palette": ["#14213D", "#F7F4ED", "#FCA311", "#2CB67D"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_venture_proposition","description":"以产品场景和投资信息栏构成强观点封面。","components":[{"id":"hero","position":{"x":690,"y":80},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":490,"height":560},"fit":"cover"}]}]},
+    {"id":"problem_cost_of_inaction","description":"用一个具体影响和紧凑证据条定义问题与不行动成本。","components":[]},
+    {"id":"market_wedge_opportunity","description":"展示切入细分市场、扩展路径与可服务机会。","components":[]},
+    {"id":"solution_product_walkthrough","description":"以三个产品或界面框和用户结果说明产品路径。","components":[{"id":"product-frames","position":{"x":600,"y":150},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":540,"height":360},"fit":"contain"}]}]},
+    {"id":"business_model_unit_economics","description":"以一个主利润信号呈现商业模式与单位经济。","components":[]},
+    {"id":"traction_evidence_curve","description":"用增长曲线、三个验证点和证据栏建立信心。","components":[]},
+    {"id":"roadmap_use_of_funds","description":"将里程碑与资源、负责人和可衡量结果关联。","components":[]},
+    {"id":"ask_and_next_conversation","description":"以融资诉求、关键里程碑和下一次沟通提示收束。","components":[]}
+  ]
+}

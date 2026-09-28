@@ -1,0 +1,20 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "cairosvg>=2.7.1",
+    "langgraph>=1.2,<2.0",
+    "openpyxl>=3.1.0",
+    "pillow>=12.2.0",
+    "pypdf>=5.0.0",
+    "pypdfium2>=4.30.0",
+    "python-pptx>=1.0.2",
+    "reportlab>=4.2.0",
+    "svglib>=1.5.1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

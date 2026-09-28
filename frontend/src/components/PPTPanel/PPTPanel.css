@@ -1,0 +1,584 @@
+.ppt-workbench {
+  isolation: isolate;
+  color: var(--app-text);
+}
+
+.ppt-workbench--light {
+  background: linear-gradient(180deg, var(--app-workspace) 0%, var(--app-canvas) 45%, var(--app-bg) 100%);
+}
+
+.ppt-workbench--dark {
+  color: var(--app-text);
+  background: linear-gradient(180deg, var(--app-workspace) 0%, var(--app-canvas) 52%, var(--app-bg) 100%);
+}
+
+.ppt-workbench__ambient {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(112deg, transparent 0 36%, color-mix(in srgb, var(--app-ambient-primary) 10%, transparent) 48%, transparent 63%),
+    linear-gradient(180deg, transparent 48%, color-mix(in srgb, var(--app-muted) 8%, transparent) 100%);
+}
+
+.ppt-workbench--dark .ppt-workbench__ambient {
+  background:
+    linear-gradient(112deg, transparent 0 34%, color-mix(in srgb, var(--app-ambient-primary) 7%, transparent) 48%, transparent 65%),
+    linear-gradient(180deg, transparent 44%, color-mix(in srgb, var(--app-muted) 7%, transparent) 72%, color-mix(in srgb, var(--app-dot) 6%, transparent) 100%);
+}
+
+.ppt-workbench__ambient::before {
+  position: absolute;
+  right: -14%;
+  bottom: -22%;
+  left: -8%;
+  height: 55%;
+  content: '';
+  opacity: 0.88;
+  transform: skewY(-7deg);
+  transform-origin: 100% 100%;
+  background: linear-gradient(92deg, transparent 0%, color-mix(in srgb, var(--app-ambient-primary) 12%, transparent) 35%, color-mix(in srgb, var(--app-ambient-secondary) 9%, transparent) 58%, color-mix(in srgb, var(--app-dot-active) 7%, transparent) 78%, transparent 100%);
+  filter: blur(20px);
+}
+
+.ppt-workbench--dark .ppt-workbench__ambient::before {
+  background: linear-gradient(92deg, transparent 0%, color-mix(in srgb, var(--app-ambient-primary) 9%, transparent) 35%, color-mix(in srgb, var(--app-ambient-secondary) 9%, transparent) 58%, color-mix(in srgb, var(--app-dot-active) 6%, transparent) 78%, transparent 100%);
+}
+
+.ppt-workbench__ambient-image {
+  position: absolute;
+  display: block;
+  width: min(64vw, 980px);
+  aspect-ratio: 16 / 9;
+  opacity: calc(0.11 * var(--app-decorative-art-opacity));
+  background-position: center;
+  background-size: cover;
+  filter: var(--app-decorative-art-filter);
+  mix-blend-mode: var(--app-decorative-art-blend-mode);
+  mask-image: linear-gradient(110deg, transparent 0%, black 28%, black 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(110deg, transparent 0%, black 28%, black 78%, transparent 100%);
+}
+
+.ppt-workbench__ambient-image--hero {
+  right: -8%;
+  bottom: -8%;
+  transform: rotate(-3deg);
+  background-image: url('/showcase-ppt-hero-preview.webp');
+}
+
+.ppt-workbench__ambient-image--architecture {
+  bottom: -22%;
+  left: -16%;
+  width: min(48vw, 720px);
+  opacity: calc(0.08 * var(--app-decorative-art-opacity));
+  transform: rotate(5deg);
+  background-image: url('/showcase-ppt-architecture-preview.webp');
+}
+
+.ppt-workbench--dark .ppt-workbench__ambient-image {
+  opacity: calc(0.13 * var(--app-decorative-art-opacity));
+  filter: var(--app-decorative-art-filter);
+}
+
+.ppt-workbench__sidebar,
+.ppt-workbench__shell,
+.ppt-workbench__form-surface,
+.ppt-workbench__artifact,
+.ppt-generating__conversation,
+.ppt-generating__stage,
+.ppt-generating__artifacts {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow);
+  backdrop-filter: blur(22px) saturate(116%);
+  -webkit-backdrop-filter: blur(22px) saturate(116%);
+}
+
+.ppt-workbench--dark .ppt-workbench__sidebar,
+.ppt-workbench--dark .ppt-workbench__shell,
+.ppt-workbench--dark .ppt-workbench__form-surface,
+.ppt-workbench--dark .ppt-workbench__artifact,
+.ppt-workbench--dark .ppt-generating__conversation,
+.ppt-workbench--dark .ppt-generating__stage,
+.ppt-workbench--dark .ppt-generating__artifacts {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow);
+}
+
+.ppt-workbench__sidebar,
+.ppt-workbench__artifact,
+.ppt-generating__conversation,
+.ppt-generating__artifacts {
+  background: linear-gradient(155deg, var(--app-glass-strong), color-mix(in srgb, var(--app-panel) 72%, transparent)) !important;
+}
+
+.ppt-workbench--dark .ppt-workbench__sidebar,
+.ppt-workbench--dark .ppt-workbench__artifact,
+.ppt-workbench--dark .ppt-generating__conversation,
+.ppt-workbench--dark .ppt-generating__artifacts {
+  background: linear-gradient(155deg, var(--app-glass-strong), color-mix(in srgb, var(--app-panel) 72%, transparent)) !important;
+}
+
+.ppt-workbench__shell {
+  background: linear-gradient(135deg, var(--app-glass), color-mix(in srgb, var(--app-panel) 68%, transparent)) !important;
+}
+
+.ppt-workbench--dark .ppt-workbench__shell {
+  background: linear-gradient(135deg, var(--app-glass), color-mix(in srgb, var(--app-panel) 68%, transparent)) !important;
+}
+
+.ppt-workbench__header {
+  position: relative;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--app-panel-raised) 42%, transparent), color-mix(in srgb, var(--app-panel-inset) 22%, transparent));
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench__header::after {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0;
+  left: 1.1rem;
+  height: 1px;
+  content: '';
+  opacity: 0.75;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--app-ambient-primary) 44%, transparent), transparent);
+}
+
+.ppt-workbench--dark .ppt-workbench__header {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--app-panel-raised) 32%, transparent), color-mix(in srgb, var(--app-panel-soft) 66%, transparent));
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-workbench__header::after {
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--app-ambient-primary) 34%, transparent), color-mix(in srgb, var(--app-ambient-secondary) 20%, transparent), transparent);
+}
+
+.ppt-workbench__form-surface,
+.ppt-workbench__artifact {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--app-panel) 76%, transparent), color-mix(in srgb, var(--app-panel-soft) 68%, transparent)) !important;
+}
+
+.ppt-workbench--dark .ppt-workbench__form-surface,
+.ppt-workbench--dark .ppt-workbench__artifact {
+  background: linear-gradient(150deg, color-mix(in srgb, var(--app-panel) 76%, transparent), color-mix(in srgb, var(--app-panel-soft) 68%, transparent)) !important;
+}
+
+.ppt-workbench__workspace {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-canvas) 62%, transparent), color-mix(in srgb, var(--app-workspace) 42%, transparent)) !important;
+}
+
+.ppt-workbench--light .ppt-workbench__form-grid {
+  background:
+    radial-gradient(ellipse at 96% 4%, color-mix(in srgb, var(--app-ambient-primary) 8%, transparent), transparent 28%),
+    radial-gradient(ellipse at 4% 96%, color-mix(in srgb, var(--app-muted) 6%, transparent), transparent 32%);
+}
+
+.ppt-workbench--light .ppt-workbench__form-surface {
+  background: linear-gradient(152deg, color-mix(in srgb, var(--app-panel) 84%, transparent), color-mix(in srgb, var(--app-panel-soft) 72%, transparent)) !important;
+}
+
+.ppt-workbench--light .ppt-workbench__artifact {
+  background: linear-gradient(152deg, color-mix(in srgb, var(--app-panel) 86%, transparent), color-mix(in srgb, var(--app-panel-soft) 74%, transparent)) !important;
+}
+
+.ppt-workbench--dark .ppt-workbench__workspace {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-canvas) 62%, transparent), color-mix(in srgb, var(--app-workspace) 42%, transparent)) !important;
+}
+
+.ppt-workbench__clear-sidebars {
+  box-shadow:
+    0 8px 20px rgba(93, 64, 32, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+.ppt-workbench--dark .ppt-workbench__clear-sidebars {
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.ppt-workbench .ppt-history-item {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ppt-workbench--dark .ppt-history-item {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.ppt-form {
+  position: relative;
+  padding-bottom: 1.35rem;
+}
+
+.ppt-form__inspiration-strip {
+  overflow: hidden;
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-form__inspiration-strip {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-form__templates {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: 18px;
+  background: linear-gradient(136deg, color-mix(in srgb, var(--app-panel) 78%, transparent), color-mix(in srgb, var(--app-panel-soft) 64%, transparent));
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-form__templates::after {
+  position: absolute;
+  top: -44%;
+  right: 9%;
+  width: 34%;
+  height: 122%;
+  content: '';
+  opacity: 0.45;
+  transform: rotate(19deg);
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--app-ambient-primary) 10%, transparent), transparent);
+  pointer-events: none;
+}
+
+.ppt-workbench--dark .ppt-form__templates {
+  border-color: var(--app-border);
+  background: linear-gradient(136deg, color-mix(in srgb, var(--app-panel) 78%, transparent), color-mix(in srgb, var(--app-panel-soft) 64%, transparent));
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-form__templates::after {
+  opacity: 0.45;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--app-ambient-primary) 10%, transparent), transparent);
+}
+
+.ppt-form__templates > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ppt-form__template-grid {
+  gap: 0.7rem;
+}
+
+.ppt-form__template-card {
+  position: relative;
+  border-width: 1px !important;
+  border-color: var(--app-border) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    var(--app-shadow-soft) !important;
+  transform: translateZ(0);
+}
+
+.ppt-form__template-card[aria-pressed='true'] {
+  border-color: var(--app-primary) !important;
+  box-shadow:
+    0 15px 30px color-mix(in srgb, var(--app-primary) 22%, transparent),
+    0 0 0 3px var(--app-primary-soft),
+    inset 0 1px 0 color-mix(in srgb, var(--app-panel-raised) 74%, transparent) !important;
+}
+
+.ppt-form__template-card::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(128deg, rgba(255, 255, 255, 0.28), transparent 37%, rgba(150, 91, 40, 0.09));
+}
+
+.ppt-form__template-card > div:first-child {
+  border-bottom: 1px solid rgba(126, 91, 52, 0.1);
+}
+
+.ppt-form__template-card img {
+  transition: transform 480ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 480ms ease;
+}
+
+.ppt-form__template-card:hover img {
+  filter: saturate(1.07) contrast(1.02);
+  transform: scale(1.055);
+}
+
+.ppt-workbench--dark .ppt-form__template-card {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow-soft) !important;
+}
+
+.ppt-workbench--dark .ppt-form__template-card[aria-pressed='true'] {
+  border-color: var(--app-primary) !important;
+  box-shadow:
+    0 16px 34px color-mix(in srgb, var(--app-primary) 18%, transparent),
+    0 0 0 3px var(--app-primary-soft),
+    inset 0 1px 0 color-mix(in srgb, var(--app-panel-raised) 9%, transparent) !important;
+}
+
+.ppt-workbench--dark .ppt-form__template-card::after {
+  background: linear-gradient(128deg, color-mix(in srgb, var(--app-ambient-primary) 11%, transparent), transparent 38%, color-mix(in srgb, var(--app-ambient-secondary) 16%, transparent));
+}
+
+.ppt-form__field,
+.ppt-form__models {
+  position: relative;
+}
+
+.ppt-form__field > label:first-child,
+.ppt-form__models > p:first-child {
+  letter-spacing: 0;
+}
+
+.ppt-form textarea,
+.ppt-form input:not([type='file']),
+.ppt-form select {
+  border-color: var(--app-border) !important;
+  border-radius: 12px !important;
+  background: var(--app-control) !important;
+  color: var(--app-text) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-form textarea:focus-visible,
+.ppt-form input:not([type='file']):focus-visible,
+.ppt-form select:focus-visible {
+  border-color: var(--app-primary) !important;
+  box-shadow: 0 0 0 3px var(--app-primary-soft), var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-form textarea,
+.ppt-workbench--dark .ppt-form input:not([type='file']),
+.ppt-workbench--dark .ppt-form select {
+  border-color: var(--app-border) !important;
+  background: var(--app-control) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-form textarea:focus-visible,
+.ppt-workbench--dark .ppt-form input:not([type='file']):focus-visible,
+.ppt-workbench--dark .ppt-form select:focus-visible {
+  border-color: var(--app-primary) !important;
+  box-shadow: 0 0 0 3px var(--app-primary-soft), var(--app-shadow-soft);
+}
+
+.ppt-form__dropzone {
+  border-width: 1px !important;
+  border-color: var(--app-border-strong) !important;
+  border-radius: 14px !important;
+  background:
+    linear-gradient(135deg, var(--app-control), var(--app-panel-soft)) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-form__dropzone {
+  border-color: var(--app-border-strong) !important;
+  background: linear-gradient(135deg, var(--app-control), var(--app-panel-soft)) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-form__slide-card,
+.ppt-form__mode-card,
+.ppt-form__model-card,
+.ppt-form__estimate {
+  border-radius: 14px !important;
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow-soft) !important;
+}
+
+.ppt-form__mode-card {
+  min-height: 120px;
+}
+
+.ppt-form__mode-card:hover,
+.ppt-form__model-card:hover {
+  border-color: var(--app-border-strong) !important;
+}
+
+.ppt-form__mode-card[aria-pressed='true'] {
+  border-color: var(--app-primary) !important;
+  box-shadow:
+    0 13px 26px color-mix(in srgb, var(--app-primary) 17%, transparent),
+    0 0 0 3px var(--app-primary-soft),
+    inset 0 1px 0 color-mix(in srgb, var(--app-panel-raised) 68%, transparent) !important;
+}
+
+.ppt-workbench--dark .ppt-form__slide-card,
+.ppt-workbench--dark .ppt-form__mode-card,
+.ppt-workbench--dark .ppt-form__model-card,
+.ppt-workbench--dark .ppt-form__estimate {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow-soft) !important;
+}
+
+.ppt-workbench--dark .ppt-form__mode-card:hover,
+.ppt-workbench--dark .ppt-form__model-card:hover {
+  border-color: var(--app-border-strong) !important;
+}
+
+.ppt-workbench--dark .ppt-form__mode-card[aria-pressed='true'] {
+  border-color: var(--app-primary) !important;
+  box-shadow:
+    0 13px 26px color-mix(in srgb, var(--app-primary) 18%, transparent),
+    0 0 0 3px var(--app-primary-soft),
+    inset 0 1px 0 color-mix(in srgb, var(--app-panel-raised) 7%, transparent) !important;
+}
+
+.ppt-form__generate {
+  min-height: 58px;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 34%, var(--app-border)) !important;
+  border-radius: 15px !important;
+  color: var(--app-on-primary) !important;
+  background: var(--app-primary-gradient) !important;
+  box-shadow: 0 15px 28px color-mix(in srgb, var(--app-primary) 24%, transparent), var(--app-shadow-soft) !important;
+}
+
+.ppt-workbench--dark .ppt-form__generate {
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border)) !important;
+  color: var(--app-on-primary) !important;
+  background: var(--app-primary-gradient) !important;
+  box-shadow: 0 15px 30px color-mix(in srgb, var(--app-primary) 22%, transparent), var(--app-shadow-soft) !important;
+}
+
+.ppt-generating__conversation,
+.ppt-generating__stage,
+.ppt-generating__artifacts {
+  overflow: hidden;
+}
+
+.ppt-generating__conversation > div:first-child,
+.ppt-generating__artifacts > div:first-child,
+.ppt-generating__stage > div > div:first-child {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--app-panel-raised) 35%, transparent), color-mix(in srgb, var(--app-panel-soft) 72%, transparent));
+}
+
+.ppt-workbench--dark .ppt-generating__conversation > div:first-child,
+.ppt-workbench--dark .ppt-generating__artifacts > div:first-child,
+.ppt-workbench--dark .ppt-generating__stage > div > div:first-child {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--app-panel-raised) 10%, transparent), color-mix(in srgb, var(--app-panel-soft) 68%, transparent));
+}
+
+.ppt-conversation-message {
+  max-width: 94%;
+  border: 1px solid var(--app-border);
+  border-radius: 14px;
+  padding: 10px 11px;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-conversation-message__avatar {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 30%, var(--app-border));
+  border-radius: 8px;
+  background: var(--app-primary-soft);
+  color: var(--app-primary);
+}
+
+.ppt-conversation-message__label {
+  color: var(--app-text);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ppt-conversation-message--ai {
+  margin-right: auto;
+  background: color-mix(in srgb, var(--app-panel-raised) 84%, transparent);
+}
+
+.ppt-conversation-message--user {
+  margin-left: auto;
+  border-color: color-mix(in srgb, var(--app-primary) 38%, var(--app-border));
+  background: color-mix(in srgb, var(--app-primary-soft) 74%, var(--app-panel-raised));
+}
+
+.ppt-conversation-message--user .ppt-conversation-message__avatar {
+  background: var(--app-primary);
+  color: var(--app-on-primary);
+}
+
+.ppt-conversation-message--activity {
+  margin-right: auto;
+  border-left-width: 3px;
+  background: color-mix(in srgb, var(--app-panel-soft) 88%, transparent);
+}
+
+.ppt-generating__stage textarea,
+.ppt-generating__stage input,
+.ppt-generating__stage select {
+  border-color: var(--app-border) !important;
+  background: var(--app-control) !important;
+  color: var(--app-text) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.ppt-workbench--dark .ppt-generating__stage textarea,
+.ppt-workbench--dark .ppt-generating__stage input,
+.ppt-workbench--dark .ppt-generating__stage select {
+  border-color: var(--app-border) !important;
+  background: var(--app-control) !important;
+  color: var(--app-text) !important;
+  box-shadow: var(--app-shadow-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ppt-workbench__ambient::before {
+    animation: ppt-workbench-light-shift 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .ppt-workbench__ambient-image--hero {
+    animation: ppt-workbench-gallery-drift 22s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .ppt-workbench__ambient-image--architecture {
+    animation: ppt-workbench-gallery-drift-reverse 26s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
+@keyframes ppt-workbench-light-shift {
+  from { transform: skewY(-7deg) translate3d(-2%, 0, 0); }
+  to { transform: skewY(-7deg) translate3d(4%, -4%, 0); }
+}
+
+@keyframes ppt-workbench-gallery-drift {
+  from { transform: rotate(-3deg) translate3d(0, 0, 0) scale(1); }
+  to { transform: rotate(-1deg) translate3d(-2%, -3%, 0) scale(1.035); }
+}
+
+@keyframes ppt-workbench-gallery-drift-reverse {
+  from { transform: rotate(5deg) translate3d(0, 0, 0) scale(1); }
+  to { transform: rotate(2deg) translate3d(4%, 2%, 0) scale(1.04); }
+}
+
+@media (max-width: 900px) {
+  .ppt-form__templates {
+    padding: 0.8rem;
+  }
+
+  .ppt-form__template-grid {
+    gap: 0.5rem;
+  }
+
+  .ppt-form__template-card {
+    border-radius: 11px !important;
+  }
+
+  .ppt-workbench__ambient-image--architecture {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ppt-form__template-card img {
+    transition: none;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "product",
+  "name": "Product",
+  "description": "Premium product narrative with clear problem framing, feature hierarchy, proof points, and launch-ready visual rhythm.",
+  "localized_name": "产品发布",
+  "localized_description": "适合产品发布、商业提案和增长复盘的高级叙事，先讲问题，再用功能、证据和路线图推进决策。",
+  "localized_tags": ["产品", "发布", "路演", "增长"],
+  "palette": ["#101828", "#F8FAFC", "#7F56D9", "#12B76A"],
+  "fonts": ["Aptos Display", "Noto Sans CJK SC"],
+  "layouts": [
+    {"id":"cover_product_render_left_title_right","description":"Product render cover with a sharp value proposition and launch metadata.","components":[{"id":"product-render","position":{"x":690,"y":70},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":500,"height":580},"fit":"contain"}]}]},
+    {"id":"problem_solution_split","description":"Problem and solution split screen with a visual transition between both states.","components":[]},
+    {"id":"feature_grid_with_icons","description":"Feature grid with a dominant feature, supporting icons, and editable proof text.","components":[]},
+    {"id":"workflow_steps_with_screenshot","description":"Workflow steps paired with a product screenshot and a protected copy zone.","components":[{"id":"screenshot","position":{"x":760,"y":120},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":440,"height":480},"fit":"contain"}]}]},
+    {"id":"metric_dashboard_story","description":"Metrics dashboard where one hero metric is supported by three diagnostic signals.","components":[]},
+    {"id":"before_after_comparison","description":"Before and after comparison with one clear outcome statement and aligned evidence.","components":[]},
+    {"id":"roadmap_quarters","description":"Quarter-based roadmap with milestones, owners, and dependency notes.","components":[]},
+    {"id":"launch_call_to_action","description":"Launch close with product image, one action, and a concise proof statement.","components":[{"id":"launch-image","position":{"x":0,"y":0},"elements":[{"type":"image","position":{"x":0,"y":0},"size":{"width":1280,"height":720},"fit":"cover"}]}]}
+  ]
+}
